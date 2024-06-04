@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2024 a las 17:59:53
+-- Tiempo de generación: 04-06-2024 a las 20:55:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `entrenador` (
   `dni` varchar(30) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
-  `especialidad` int(70) NOT NULL,
+  `especialidad` varchar(70) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -105,7 +105,9 @@ CREATE TABLE `socio` (
 -- Indices de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  ADD PRIMARY KEY (`IdAsistencia`);
+  ADD PRIMARY KEY (`IdAsistencia`),
+  ADD KEY `IdSocio` (`IdSocio`),
+  ADD KEY `IdClase` (`IdClase`);
 
 --
 -- Indices de la tabla `clase`
@@ -133,7 +135,8 @@ ALTER TABLE `membresia`
 --
 ALTER TABLE `socio`
   ADD PRIMARY KEY (`IdSocio`),
-  ADD UNIQUE KEY `dni` (`dni`);
+  ADD UNIQUE KEY `dni` (`dni`),
+  ADD UNIQUE KEY `correo` (`correo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -172,6 +175,19 @@ ALTER TABLE `socio`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD CONSTRAINT `asistencia_ibfk_1` FOREIGN KEY (`IdSocio`) REFERENCES `socio` (`IdSocio`),
+  ADD CONSTRAINT `asistencia_ibfk_2` FOREIGN KEY (`IdClase`) REFERENCES `clase` (`IdClase`);
+
+--
+-- Filtros para la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD CONSTRAINT `clase_ibfk_1` FOREIGN KEY (`IdEntrenador`) REFERENCES `entrenador` (`IdEntrenador`);
 
 --
 -- Filtros para la tabla `membresia`
