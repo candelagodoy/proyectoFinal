@@ -4,27 +4,27 @@ package entidades;
 public class Entrenador {
     private int IdEntrenador;
     private int Dni;
-    private String nombre;
     private String apellido;
+    private String nombre;
     private String especialidad;
     private Boolean estado;
 
     public Entrenador() {
     }
 
-    public Entrenador(int IdEntrenador, int Dni, String nombre, String apellido, String especialidad, Boolean estado) {
+    public Entrenador(int IdEntrenador, int Dni, String apellido,String nombre, String especialidad, Boolean estado) {
         this.IdEntrenador = IdEntrenador;
         this.Dni = Dni;
-        this.nombre = nombre;
         this.apellido = apellido;
+        this.nombre = nombre;
         this.especialidad = especialidad;
         this.estado = estado;
     }
 
-    public Entrenador(int Dni, String nombre, String apellido, String especialidad, Boolean estado) {
+    public Entrenador(int Dni,String apellido,String nombre,String especialidad, Boolean estado) {
         this.Dni = Dni;
-        this.nombre = nombre;
         this.apellido = apellido;
+        this.nombre = nombre;
         this.especialidad = especialidad;
         this.estado = estado;
     }
