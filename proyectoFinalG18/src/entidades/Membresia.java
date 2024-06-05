@@ -82,7 +82,7 @@ public class Membresia {
         this.Costo = Costo;
     }
 
-    public Boolean getEstado() {
+    public Boolean isEstado() {
         return estado;
     }
 
