@@ -101,7 +101,7 @@ public class EntrenadorData {
     }
 
     public List<Entrenador> listarEntrenadores() {
-        List<Entrenador> entrenador = new ArrayList<>();
+        List<Entrenador> entrenadores = new ArrayList<>();
         String sql = "SELECT * FROM entrenador WHERE estado = 1 ";
 
         try {
@@ -115,7 +115,7 @@ public class EntrenadorData {
                 entrenador.setNombre(resultado.getString("nombre"));
                 entrenador.setEspecialidad(resultado.getString("especialidad"));
                 entrenador.setEstado(resultado.getBoolean("estado"));
-                entrenador.add(entrenador);
+                entrenadores.add(entrenador);
 
             }
             ps.close();
@@ -123,7 +123,7 @@ public class EntrenadorData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Entrenador ");
         }
-        return entrenador;
+        return entrenadores;
 
     }
 
