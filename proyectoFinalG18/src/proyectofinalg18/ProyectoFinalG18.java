@@ -42,7 +42,7 @@ public class ProyectoFinalG18 {
 
      //Busqueda por Dni 
      
-        System.out.println(""+ eD.buscarEntrenadorPorDni(37412834));
+//       System.out.println(""+ eD.buscarEntrenadorPorDni(37412834));
 
 
 
