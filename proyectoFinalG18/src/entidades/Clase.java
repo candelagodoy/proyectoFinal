@@ -72,7 +72,7 @@ public class Clase {
         this.capacidad = capacidad;
     }
 
-    public Boolean getEstado() {
+    public Boolean isEstado() {
         return estado;
     }
 

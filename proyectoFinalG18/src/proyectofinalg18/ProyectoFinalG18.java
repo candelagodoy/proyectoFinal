@@ -1,8 +1,12 @@
 
 package proyectofinalg18;
 
+import accesoADatos.ClaseData;
 import accesoADatos.EntrenadorData;
+import entidades.Clase;
 import entidades.Entrenador;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
         
         
@@ -19,8 +23,15 @@ public class ProyectoFinalG18 {
        Entrenador Tomas = new Entrenador (45001002,"Tomas Emiliano", "Carrillo","Calistenia", true);
        Entrenador Juanjo = new Entrenador (35001002,"Juan Jose", "Perez", "Boxeo", true);
        
-       EntrenadorData eD= new EntrenadorData();
        
+
+     //agregar clase a la DB
+       //LocalTime hora = LocalTime.of(16, 00, 00);
+       //Clase cl= new Clase("boxeo",1,hora,5,true);
+       
+       //ClaseData cd= new ClaseData();
+       
+       //cd.guardarClase(cl);
        
        
        

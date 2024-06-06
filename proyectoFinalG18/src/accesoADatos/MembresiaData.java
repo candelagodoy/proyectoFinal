@@ -2,6 +2,7 @@ package accesoADatos;
 
 import entidades.Membresia;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +33,14 @@ public class MembresiaData {
 
             ps.setInt(1, membresia.getIdSocio());
             ps.setInt(2, membresia.getCantidadPases());
+            //**************************************************
+            //posible solucion
+            //Date fi= Date.valueOf(membresia.getFechaInicio());
+            //ps.setDate(3, fi);
+            //Date ff= Date.valueOf(membresia.getFechaFin());
+            //ps.setDate(4,ff);
+            //*******************************************************
+            
             //ps.setDate(3, membresia.getFechaInicio());
             //ps.setDate(4, membresia.getFechaFin());
             ps.setDouble(5, membresia.getCosto());
