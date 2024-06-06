@@ -3,7 +3,7 @@ package entidades;
 
 public class Socio {
     private int IdSocio;
-    private int Dni;
+    private String Dni;
     private String nombre;
     private String apellido;
     private int edad;
@@ -14,7 +14,7 @@ public class Socio {
     
     public Socio(){
     }
-    public Socio(int IdSocio, int Dni, String nombre, String apellido, int edad, String correo, int telefono, Boolean estado){
+    public Socio(int IdSocio, String Dni, String nombre, String apellido, int edad, String correo, int telefono, Boolean estado){
         this.IdSocio= IdSocio;
         this.Dni= Dni;
         this.nombre= nombre;
@@ -25,7 +25,7 @@ public class Socio {
         this.estado= estado;
     }
     
-    public Socio(int Dni, String nombre, String apellido, int edad, String correo, int telefono, Boolean estado){
+    public Socio(String Dni, String nombre, String apellido, int edad, String correo, int telefono, Boolean estado){
         this.Dni= Dni;
         this.nombre= nombre;
         this.apellido= apellido;
@@ -43,13 +43,15 @@ public class Socio {
         this.IdSocio = IdSocio;
     }
 
-    public int getDni() {
+    public String getDni() {
         return Dni;
     }
 
-    public void setDni(int Dni) {
+    public void setDni(String Dni) {
         this.Dni = Dni;
     }
+
+   
 
     public String getNombre() {
         return nombre;
@@ -91,7 +93,7 @@ public class Socio {
         this.telefono = telefono;
     }
 
-    public Boolean getEstado() {
+    public Boolean isEstado() {
         return estado;
     }
 
