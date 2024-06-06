@@ -93,7 +93,7 @@ public class MembresiaData {
         try {
             String sql = "UPDATE membresia SET IdSocio= ?, CantidadPases = ?, FechaInicio= ?, FechaFin= ?, Costo=?, estado= ? WHERE idMembresia= ? ";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, membresia.getIdSocio());
+            //ps.setInt(1, membresia.getIdSocio());
             ps.setInt(2, membresia.getCantidadPases());
             // ps.setDate(3, membresia.getFechaInicio());
             // ps.setDate(4, membresia.getFechaFin());
@@ -143,7 +143,7 @@ public class MembresiaData {
             while (resultado.next()) {
                 Membresia membresia = new Membresia();
                 membresia.setIdMembresia(resultado.getInt("idMembresia"));
-                membresia.setIdSocio(resultado.getInt("IdSocio"));
+                //membresia.setIdSocio(resultado.getInt("IdSocio"));
                 membresia.setCantidadPases(resultado.getInt("CantidadaPases"));
                 //membresia.setFechaInicio(resultado.getDate("FechaInicio"));
                 //membresia.setFechaFin(resultado.getDate("FechaFin"));
