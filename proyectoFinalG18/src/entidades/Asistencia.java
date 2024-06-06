@@ -5,25 +5,25 @@ import java.util.Date;
 
 public class Asistencia {
      private int IdAsistencia;
-    private int IdSocio;
-    private int IdClase;
+    private Socio socio;
+    private Clase clase;
     private Date FechaAsistencia;
 
     public Asistencia() {
 
     }
 
-    public Asistencia(int IdAsistencia, int IdSocio, int IdClase, Date FechaAsistencia) {
+    public Asistencia(int IdAsistencia, Socio socio, Clase clase, Date FechaAsistencia) {
         this.IdAsistencia = IdAsistencia;
-        this.IdSocio = IdSocio;
-        this.IdClase = IdClase;
+        this.socio = socio;
+        this.clase= clase;
         this.FechaAsistencia = FechaAsistencia;
 
     }
 
-    public Asistencia(int IdSocio, int IdClase, Date FechaAsistencia) {
-        this.IdSocio = IdSocio;
-        this.IdClase = IdClase;
+    public Asistencia(Socio socio, Clase clase, Date FechaAsistencia) {
+        this.socio = socio;
+        this.clase = clase;
         this.FechaAsistencia = FechaAsistencia;
     }
 
@@ -35,21 +35,23 @@ public class Asistencia {
         this.IdAsistencia = IdAsistencia;
     }
 
-    public int getIdSocio() {
-        return IdSocio;
+    public Socio getSocio() {
+        return socio;
     }
 
-    public void setIdSocio(int IdSocio) {
-        this.IdSocio = IdSocio;
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 
-    public int getIdClase() {
-        return IdClase;
+    public Clase getClase() {
+        return clase;
     }
 
-    public void setIdClase(int IdClase) {
-        this.IdClase = IdClase;
+    public void setClase(Clase clase) {
+        this.clase = clase;
     }
+
+    
 
     public Date getFechaAsistencia() {
         return FechaAsistencia;
@@ -61,7 +63,7 @@ public class Asistencia {
 
     @Override
     public String toString() {
-        return "Asistencia{" + "IdAsistencia=" + IdAsistencia + ", IdSocio=" + IdSocio + ", IdClase=" + IdClase + ", FechaAsistencia=" + '}' + "\n";
+        return "Asistencia{" + "IdAsistencia=" + IdAsistencia + ", Socio=" + socio + ", Clase=" + clase + ", FechaAsistencia=" + '}' + "\n";
 
     }
 

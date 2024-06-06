@@ -1,7 +1,7 @@
 
 package accesoADatos;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+
 import entidades.Clase;
 import entidades.Entrenador;
 import java.sql.Connection;

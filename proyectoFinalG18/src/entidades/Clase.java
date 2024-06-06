@@ -7,7 +7,7 @@ import java.time.LocalTime;
 public class Clase {
     private int IdClase;
     private String nombre;
-    private int IdEntrenador;
+    private Ent;
     private LocalTime horario;
     private int capacidad;
     private Boolean estado;

@@ -30,8 +30,9 @@ public class MembresiaData {
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-            ps.setInt(1, membresia.getIdSocio());
+            
+            int id = membresia.getSocio().getIdSocio();
+            ps.setInt(1, id);
             ps.setInt(2, membresia.getCantidadPases());
             //**************************************************
             //posible solucion
@@ -70,7 +71,7 @@ public class MembresiaData {
             if (resultado.next()) {
                 membresia = new Membresia();
                 membresia.setIdMembresia(idMembresia);
-                membresia.setIdSocio(resultado.getInt("IdSocio"));
+                //membresia.setSocio;
                 membresia.setCantidadPases(resultado.getInt("CantidadPases"));
                 // membresia.setFechaInicio(resultado.getDate());
                 // membresia.setFechaFin(resultado.getDate());

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Membresia {
     private int IdMembresia;
-    private int IdSocio;
+    private Socio socio;
     private int CantidadPases;
     private LocalDate FechaInicio;
     private LocalDate FechaFin;
@@ -15,9 +15,9 @@ public class Membresia {
     public Membresia() {
     }
 
-    public Membresia(int IdMembresia, int IdSocio, int CantidadPases, LocalDate FechaInicio, LocalDate FechaFin, double Costo, Boolean estado) {
+    public Membresia(int IdMembresia, Socio socio, int CantidadPases, LocalDate FechaInicio, LocalDate FechaFin, double Costo, Boolean estado) {
         this.IdMembresia = IdMembresia;
-        this.IdSocio = IdSocio;
+        this.socio = socio;
         this.CantidadPases = CantidadPases;
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
@@ -25,8 +25,8 @@ public class Membresia {
         this.estado = estado;
     }
 
-    public Membresia(int IdSocio, int CantidadPases, LocalDate FechaInicio, LocalDate FechaFin, double Costo, Boolean estado) {
-        this.IdSocio = IdSocio;
+    public Membresia(Socio socio, int CantidadPases, LocalDate FechaInicio, LocalDate FechaFin, double Costo, Boolean estado) {
+        this.socio = socio;
         this.CantidadPases = CantidadPases;
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
@@ -42,13 +42,15 @@ public class Membresia {
         this.IdMembresia = IdMembresia;
     }
 
-    public int getIdSocio() {
-        return IdSocio;
+    public Socio getSocio() {
+        return socio;
     }
 
-    public void setIdSocio(int IdSocio) {
-        this.IdSocio = IdSocio;
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
+
+   
 
     public int getCantidadPases() {
         return CantidadPases;
@@ -92,7 +94,7 @@ public class Membresia {
 
     @Override
     public String toString() {
-        return "Membresia{" + "IdMembresia=" + IdMembresia + ", IdSocio=" + IdSocio + ", cantidadPases=" + CantidadPases + ", FechaInicio=" + FechaInicio + ", FechaFin=" + FechaFin + ",costo=" + Costo + ", estado=" + estado + '}' + "\n";
+        return "Membresia{" + "IdMembresia=" + IdMembresia + ", Socio=" + socio + ", cantidadPases=" + CantidadPases + ", FechaInicio=" + FechaInicio + ", FechaFin=" + FechaFin + ",costo=" + Costo + ", estado=" + estado + '}' + "\n";
 
     }
 }
