@@ -94,7 +94,8 @@ public class Membresia {
 
     @Override
     public String toString() {
-        return "Membresia{" + "IdMembresia=" + IdMembresia + ", Socio=" + socio + ", cantidadPases=" + CantidadPases + ", FechaInicio=" + FechaInicio + ", FechaFin=" + FechaFin + ",costo=" + Costo + ", estado=" + estado + '}' + "\n";
+
+        return "Membresia{" + "IdMembresia=" + IdMembresia + ", NombreSocio=" + socio.getNombre() + " , ApellidoSocio=" + socio.getApellido()+ ", cantidadPases=" + CantidadPases + ", FechaFin=" + FechaFin + ",costo=" + Costo + ", estado=" + estado + '}' + "\n";
 
     }
 }
