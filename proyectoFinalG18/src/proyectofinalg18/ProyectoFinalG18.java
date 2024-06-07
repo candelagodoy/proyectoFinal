@@ -21,17 +21,17 @@ public class ProyectoFinalG18 {
        Entrenador Candela = new Entrenador(39001002," Candela Guadalupe", "Godoy", "Spinning", true);
        Entrenador Jose = new Entrenador (32001002,"Jose Enrique", "Zuñiga", "Crossfit", true);
        Entrenador Tomas = new Entrenador (45001002,"Tomas Emiliano", "Carrillo","Calistenia", true);
-       Entrenador Juanjo = new Entrenador (35001002,"Juan Jose", "Perez", "Boxeo", true);
+       Entrenador Juanjo = new Entrenador (1,35001002,"Juan Jose", "Perez", "Boxeo", true);
        
        
 
      //agregar clase a la DB
-       //LocalTime hora = LocalTime.of(16, 00, 00);
-       //Clase cl= new Clase("boxeo",1,hora,5,true);
+       LocalTime hora = LocalTime.of(17, 00, 00);
+       Clase cl= new Clase("boxeo",Juanjo,hora,10,true);
        
-       //ClaseData cd= new ClaseData();
+       ClaseData cd= new ClaseData();
        
-       //cd.guardarClase(cl);
+       cd.guardarClase(cl);
        
        
        

@@ -7,7 +7,7 @@ import java.time.LocalTime;
 public class Clase {
     private int IdClase;
     private String nombre;
-    private int IdEntrenador;
+    private Entrenador entrenador;
     private LocalTime horario;
     private int capacidad;
     private Boolean estado;
@@ -15,18 +15,18 @@ public class Clase {
     public Clase() {
     }
 
-    public Clase(int IdClase, String nombre, int IdEntrenador, LocalTime horario, int capacidad, Boolean estado) {
+    public Clase(int IdClase, String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado) {
         this.IdClase = IdClase;
         this.nombre = nombre;
-        this.IdEntrenador = IdEntrenador;
+        this.entrenador = entrenador;
         this.horario = horario;
         this.capacidad = capacidad;
         this.estado = estado;
     }
 
-    public Clase(String nombre, int IdEntrenador, LocalTime horario, int capacidad, Boolean estado) {
+    public Clase(String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado) {
         this.nombre = nombre;
-        this.IdEntrenador = IdEntrenador;
+        this.entrenador = entrenador;
         this.horario = horario;
         this.capacidad = capacidad;
         this.estado = estado;
@@ -48,12 +48,12 @@ public class Clase {
         this.nombre = nombre;
     }
 
-    public int getIdEntrenador() {
-        return IdEntrenador;
+    public Entrenador getentrenador() {
+        return entrenador;
     }
 
-    public void setIdEntrenador(int IdEntrenador) {
-        this.IdEntrenador = IdEntrenador;
+    public void setentrenador(Entrenador entrenador) {
+        this.entrenador = entrenador;
     }
 
     public LocalTime getHorario() {
@@ -81,7 +81,7 @@ public class Clase {
     }
     @Override
     public String toString() {
-        return "Clase{" + "IdClase=" + IdClase + ", nombre=" + nombre + ", IdEntrenador=" + IdEntrenador + ", horario=" + horario + ", capacidad=" + capacidad + ", estado=" + estado + '}'+"\n";
+        return "Clase{" + "IdClase=" + IdClase + ", nombre=" + nombre + ", entrenador=" + entrenador + ", horario=" + horario + ", capacidad=" + capacidad + ", estado=" + estado + '}'+"\n";
     
                 }
 }

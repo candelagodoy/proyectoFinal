@@ -27,11 +27,13 @@ public class ClaseData {
      con = Conexion.getConexion();
 }
 public void guardarClase(Clase clase) { //int IdClase, String nombre, int IdEntrenador, LocalTime horario, int capacidad, Boolean estado
+     Entrenador ent=null;
     String sql = "INSERT INTO clase (nombre, idEntrenador, horario,capacidad, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, clase.getNombre());
-            ps.setInt(2,clase.getIdEntrenador());
+            ent.getIdEntrenador();
+            ps.setObject(2,clase.getentrenador());
             Time time = Time.valueOf( clase.getHorario());
             ps.setTime(3, time);
             ps.setInt(4, clase.getCapacidad());
@@ -39,7 +41,7 @@ public void guardarClase(Clase clase) { //int IdClase, String nombre, int IdEntr
             ps.executeUpdate();
             ResultSet resultado = ps.getGeneratedKeys();
             if (resultado.next()) {
-                clase.setIdEntrenador(resultado.getInt(1));
+                clase.setentrenador(ent);
                 JOptionPane.showMessageDialog(null, "clase agregada con exito!");
             }
             ps.close();
@@ -50,8 +52,10 @@ public void guardarClase(Clase clase) { //int IdClase, String nombre, int IdEntr
 
     }
 
+
 public List<Clase> listarClases() {
         List<Clase> clases = new ArrayList<>();
+        Entrenador ent=null;
         String sql = "SELECT * FROM clase WHERE estado = 1 ";
 
         try {
@@ -59,13 +63,13 @@ public List<Clase> listarClases() {
             ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
                 Clase clase = new Clase ();
-                //int IdClase, String nombre, int IdEntrenador, LocalTime horario, int capacidad, Boolean estado
-                clase.setIdEntrenador(resultado.getInt("idClase"));
+                //int IdClase, String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado
+                ent.setIdEntrenador(resultado.getInt("idEntrenador"));
+                clase.setIdClase(resultado.getInt("idClase"));
                 clase.setNombre(resultado.getString("nombre"));
-                clase.setIdEntrenador(resultado.getInt("idEntrenador"));
-                //Time hora= Time.valueOf(resultado.getString("horario"));
-               //LocalTime localTime = LocalTime.;
-               // clase.setHorario(h);
+                clase.setentrenador(ent);
+                java.sql.Time hora = resultado.getTime("horario");
+                clase.setHorario(hora.toLocalTime());
                 clase.setEstado(resultado.getBoolean("estado"));
                 clases.add(clase);
             }
@@ -80,6 +84,7 @@ public List<Clase> listarClases() {
 
   public Clase buscarClasesxNombre(String nombre) {
         Clase clase = null;
+        Entrenador ent=null;
         String sql = "SELECT idClase, nombre, idEntrenador, horario, capacidad FROM clase WHERE nombre=? AND estado = 1";
         PreparedStatement ps = null;
         try {
@@ -90,8 +95,11 @@ public List<Clase> listarClases() {
                 clase = new Clase();
                 clase.setIdClase(resultado.getInt("idClase"));
                 clase.setNombre(resultado.getString("nombre"));
-                clase.setIdEntrenador(resultado.getInt("idEntrenador"));
-               //clase.setHorario(LocalTime.MIN.compareTo("horario"));
+                ent.setIdEntrenador(resultado.getInt("idEntrenador"));
+                clase.setentrenador(ent);
+                clase.setentrenador(ent);
+                java.sql.Time hora = resultado.getTime("horario");
+                clase.setHorario(hora.toLocalTime());
                 clase.setEstado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la clase");
@@ -104,11 +112,8 @@ public List<Clase> listarClases() {
         return clase;
     }
    
-//     public Clase buscarXEntrenador(int idEntrenador){
-//         return  idEntrenador;
-//     }
-     
-      //public Clase buscarXhorario(){}
-      
+
       //inscribir socio a una clase determinada
+  
+  
 }
