@@ -32,8 +32,7 @@ public void guardarClase(Clase clase) { //int IdClase, String nombre, int IdEntr
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, clase.getNombre());
-            ent.getIdEntrenador();
-            ps.setObject(2,clase.getentrenador());
+            ps.setInt(2, clase.getentrenador().getIdEntrenador());
             Time time = Time.valueOf( clase.getHorario());
             ps.setTime(3, time);
             ps.setInt(4, clase.getCapacidad());
@@ -61,20 +60,23 @@ public List<Clase> listarClases() {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet resultado = ps.executeQuery();
+            Clase clase = new Clase ();
             while (resultado.next()) {
-                Clase clase = new Clase ();
                 //int IdClase, String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado
-                ent.setIdEntrenador(resultado.getInt("idEntrenador"));
                 clase.setIdClase(resultado.getInt("idClase"));
                 clase.setNombre(resultado.getString("nombre"));
-                clase.setentrenador(ent);
-                java.sql.Time hora = resultado.getTime("horario");
+                int idEntrenador = resultado.getInt("idEntrenador");
+            Entrenador entrenador = entData.buscarEntrenador(idEntrenador);
+            clase.setentrenador(entrenador);
+            java.sql.Time hora = resultado.getTime("horario");
+            if (hora != null) {
                 clase.setHorario(hora.toLocalTime());
-                clase.setEstado(resultado.getBoolean("estado"));
-                clases.add(clase);
             }
+            clase.setEstado(resultado.getBoolean("estado"));
+            clases.add(clase);
+        }
+                clases.add(clase);            
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Clase ");
         }
@@ -83,34 +85,34 @@ public List<Clase> listarClases() {
     }
 
   public Clase buscarClasesxNombre(String nombre) {
-        Clase clase = null;
-        Entrenador ent=null;
-        String sql = "SELECT idClase, nombre, idEntrenador, horario, capacidad FROM clase WHERE nombre=? AND estado = 1";
-        PreparedStatement ps = null;
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ResultSet resultado = ps.executeQuery();
-            if (resultado.next()) {
-                clase = new Clase();
-                clase.setIdClase(resultado.getInt("idClase"));
-                clase.setNombre(resultado.getString("nombre"));
-                ent.setIdEntrenador(resultado.getInt("idEntrenador"));
-                clase.setentrenador(ent);
-                clase.setentrenador(ent);
-                java.sql.Time hora = resultado.getTime("horario");
-                clase.setHorario(hora.toLocalTime());
-                clase.setEstado(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe la clase");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla clase ");
+    Clase clase = null;
+    Entrenador ent = null;
+    String sql = "SELECT idClase, nombre, idEntrenador, horario, capacidad FROM clase WHERE nombre=? AND estado = 1";
+    PreparedStatement ps = null;
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, nombre);
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            clase = new Clase();
+            clase.setIdClase(resultado.getInt("idClase"));
+            clase.setNombre(resultado.getString("nombre"));
+            ent = new Entrenador(); 
+            ent.setIdEntrenador(resultado.getInt("idEntrenador"));
+            clase.setentrenador(ent);
+            java.sql.Time hora = resultado.getTime("horario");
+            clase.setHorario(hora.toLocalTime());
+            clase.setEstado(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe la clase");
         }
-
-        return clase;
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla clase ");
     }
+
+    return clase;
+}
    
 
       //inscribir socio a una clase determinada
