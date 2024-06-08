@@ -48,7 +48,7 @@ public class SocioData {
     
     }
     
-    public void actualizarSocio(Socio socio){
+    public void actualizarSocio(Socio socio){  //Probado Error al acceder a la tabla socio
         try {
             String sql = "UPDATE socio SET dni = ?,nombre = ?,apellido = ?,edad = ?,correo = ?,telefono = ? WHERE idSocio = ?";
             PreparedStatement ps = con.prepareStatement(sql);
