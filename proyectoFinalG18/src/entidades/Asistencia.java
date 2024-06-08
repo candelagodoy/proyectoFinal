@@ -4,7 +4,7 @@ package entidades;
 import java.util.Date;
 
 public class Asistencia {
-     private int IdAsistencia;
+    private int IdAsistencia;
     private Socio socio;
     private Clase clase;
     private Date FechaAsistencia;

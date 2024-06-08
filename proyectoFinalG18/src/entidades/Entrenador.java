@@ -12,7 +12,7 @@ public class Entrenador {
     public Entrenador() {
     }
 
-    public Entrenador(int IdEntrenador, int Dni, String apellido,String nombre, String especialidad, Boolean estado) {
+    public Entrenador(int IdEntrenador, int Dni,String nombre, String apellido,String especialidad, Boolean estado) {
         this.IdEntrenador = IdEntrenador;
         this.Dni = Dni;
         this.apellido = apellido;
@@ -21,7 +21,7 @@ public class Entrenador {
         this.estado = estado;
     }
 
-    public Entrenador(int Dni,String apellido,String nombre,String especialidad, Boolean estado) {
+    public Entrenador(int Dni,String nombre,String apellido,String especialidad, Boolean estado) {
         this.Dni = Dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -82,4 +82,5 @@ public class Entrenador {
         return "Entrenador{" + "IdEntrenador=" + IdEntrenador + ", Dni=" + Dni + ", apellido=" + apellido + ", nombre=" + nombre + ", especialidad=" + especialidad + ", estado=" + estado + '}' + "\n";
 
     }
+    
 }

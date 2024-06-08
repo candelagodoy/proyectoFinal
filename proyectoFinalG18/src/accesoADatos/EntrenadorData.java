@@ -43,23 +43,21 @@ public class EntrenadorData {
 
     }
 
-    public Entrenador buscarEntrenador(int id) { //Probado y funcionando 
-
+    public Entrenador buscarEntrenadorPoNombre(String nombre) { //Probado y funcionando 
         Entrenador entrenador = null;
-        String sql = "SELECT dni, apellido, nombre, especialidad FROM entrenador WHERE  IdEntrenador = ? AND estado = 1";
-        PreparedStatement ps = null;
+        String sql = "SELECT IdEntrenador,dni, apellido, especialidad FROM entrenador WHERE  nombre = ? AND estado = 1";
+        
         try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
             ResultSet resultado = ps.executeQuery();
             if (resultado.next()) {
                 entrenador = new Entrenador();
-                entrenador.setIdEntrenador(id);
+                entrenador.setIdEntrenador(resultado.getInt("IdEntrenador"));
                 entrenador.setDni(resultado.getInt("dni"));
                 entrenador.setApellido(resultado.getString("apellido"));
-                entrenador.setNombre(resultado.getString("nombre"));
                 entrenador.setEspecialidad(resultado.getString("especialidad"));
-                entrenador.setEstado(true);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Entrenador!");
             }
@@ -72,13 +70,13 @@ public class EntrenadorData {
 
     }
 
-    public Entrenador buscarEntrenadorPorDni(int dni) {  //Probado y funcionando
+    public Entrenador buscarEntrenadorPorEspecialidad(String especialidad) {  //Probado y funcionando
         Entrenador entrenador = null;
-        String sql = "SELECT IdEntrenador, dni, apellido, nombre, especialidad FROM entrenador WHERE dni=? AND estado = 1";
+        String sql = "SELECT IdEntrenador, dni, apellido, nombre FROM entrenador WHERE especialidad= ? AND estado = 1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, dni);
+            ps.setString(1, especialidad);
             ResultSet resultado = ps.executeQuery();
             if (resultado.next()) {
                 entrenador = new Entrenador();
@@ -86,7 +84,7 @@ public class EntrenadorData {
                 entrenador.setDni(resultado.getInt("dni"));
                 entrenador.setApellido(resultado.getString("apellido"));
                 entrenador.setNombre(resultado.getString("nombre"));
-                entrenador.setEspecialidad(resultado.getString("especialidad"));
+                
                 entrenador.setEstado(true);
 
             } else {
@@ -127,15 +125,15 @@ public class EntrenadorData {
 
     }
 
-    public void modificarEntrenador(Entrenador entrenador) { //Probado "Entrenador no Encontrado"
-        String sql = "UPDATE entrenador SET dni = ? , apellido = ? , nombre = ? , especialidad = ? WHERE IdEntrenador = ?";
+    public void modificarEntrenador(Entrenador entrenador) { //Probado Funcionando
+        String sql = "UPDATE entrenador SET dni = ? , nombre = ?  , apellido = ?, especialidad = ? WHERE IdEntrenador = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, entrenador.getDni());
-            ps.setString(2, entrenador.getApellido());
-            ps.setString(3, entrenador.getNombre());
+            ps.setString(2, entrenador.getNombre());
+            ps.setString(3, entrenador.getApellido());
             ps.setString(4, entrenador.getEspecialidad());
             ps.setInt(5, entrenador.getIdEntrenador());
             int exito = ps.executeUpdate();

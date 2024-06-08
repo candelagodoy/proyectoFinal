@@ -63,11 +63,11 @@ public List<Clase> listarClases() {
             Clase clase = new Clase ();
             while (resultado.next()) {
                 //int IdClase, String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado
-                clase.setIdClase(resultado.getInt("idClase"));
+                clase.setIdClase(resultado.getInt("IdClase"));
                 clase.setNombre(resultado.getString("nombre"));
-                int idEntrenador = resultado.getInt("idEntrenador");
-            Entrenador entrenador = entData.buscarEntrenador(idEntrenador);
-            clase.setentrenador(entrenador);
+                int idEntrenador = resultado.getInt("IdEntrenador");
+            //Entrenador entrenador = entData.buscarEntrenador(idEntrenador);
+            //clase.setentrenador(entrenador);
             java.sql.Time hora = resultado.getTime("horario");
             if (hora != null) {
                 clase.setHorario(hora.toLocalTime());

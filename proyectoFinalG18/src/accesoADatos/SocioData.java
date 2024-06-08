@@ -48,9 +48,11 @@ public class SocioData {
     
     }
     
-    public void actualizarSocio(Socio socio){  //Probado Error al acceder a la tabla socio
+    public void actualizarSocio(Socio socio){  //Probado funcionando
+        String sql = "UPDATE socio SET dni = ?,nombre = ?,apellido = ?,edad = ?,correo = ?,telefono = ? WHERE idSocio = ?";
+        
         try {
-            String sql = "UPDATE socio SET dni = ?,nombre = ?,apellido = ?,edad = ?,correo = ?,telefono = ? WHERE idSocio = ?";
+            
             PreparedStatement ps = con.prepareStatement(sql);
            
             ps.setString(1, socio.getDni());
@@ -59,6 +61,7 @@ public class SocioData {
             ps.setInt(4, socio.getEdad());
             ps.setString(5, socio.getCorreo());
             ps.setInt(6, socio.getTelefono());
+            ps.setInt(7, socio.getIdSocio());
             
             int exito = ps.executeUpdate();
             
@@ -99,22 +102,22 @@ public class SocioData {
         
     }
     
-    public List<Socio> listarSociosActivos(){ //Probado Error al acceder a la tabla socio
+    public List<Socio> listarSociosActivos(){ //Probado funcionando
         List<Socio> socios = new ArrayList<>();
-        
+        String sql = "SELECT * FROM socio WHERE estado = 1";
         try {
-            String sql = "SELECT * FROM socio WHERE estado = 1";
+            
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet resultado = ps.executeQuery();
             while(resultado.next()){
                 Socio socio = new Socio();
-                socio.setIdSocio(resultado.getInt("idSocio"));
+                socio.setIdSocio(resultado.getInt("IdSocio"));
                 socio.setDni(resultado.getString("dni"));
                 socio.setNombre(resultado.getString("nombre"));
                 socio.setApellido(resultado.getString("apellido"));
                 socio.setEdad(resultado.getInt("edad"));
                 socio.setCorreo(resultado.getString("correo"));
-                socio.setTelefono(resultado.getInt(resultado.getInt("telefono")));
+                socio.setTelefono(resultado.getInt("telefono"));
                 socio.setEstado(resultado.getBoolean("estado"));
                 socios.add(socio);
             }
@@ -129,17 +132,17 @@ public class SocioData {
         return socios; 
     }
     
-    public Socio buscarSocioPorNumeroSocio(int id){ //Probado Funciona pero no devuelve ningun dato
+    public Socio buscarSocioPorNumeroSocio(String dni){ //Probado Funcionando
         Socio socio = null;
+        String sql = "SELECT IdSocio, nombre, apellido, edad, correo, telefono FROM socio WHERE dni = ? AND estado = 1";
         try {
-            String sql = "SELECT IdSocio, dni, nombre, apellido, edad, correo, telefono FROM socio WHERE IdSocio = ? AND estado = 1";
+            
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, dni);
             ResultSet resultado = ps.executeQuery();
             if(resultado.next()){
                 socio = new Socio();
                 socio.setIdSocio(resultado.getInt("IdSocio"));
-                socio.setDni(resultado.getString("dni"));
                 socio.setNombre(resultado.getString("nombre"));
                 socio.setApellido(resultado.getString("apellido"));
                 socio.setEdad(resultado.getInt("edad"));
