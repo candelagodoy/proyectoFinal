@@ -17,10 +17,10 @@ public class ProyectoFinalG18 {
 
     public static void main(String[] args) {
 
-        Entrenador Luis = new Entrenador(37412834, "Luis Gabriel", "Segura", "fullbody", true);
-        Entrenador Candela = new Entrenador(39001002, " Candela Guadalupe", "Godoy", "Spinning", true);
-        Entrenador Jose = new Entrenador(32001002, "Jose Enrique", "Zuñiga", "Crossfit", true);
-        Entrenador Tomas = new Entrenador(45001002, "Tomas Emiliano", "Carrillo", "Calistenia", true);
+        Entrenador Luis = new Entrenador(3,37412834, "Luis Gabriel", "Segura", "fullbody", true);
+        Entrenador Candela = new Entrenador(4,39001002, " Candela Guadalupe", "Godoy", "Spinning", true);
+        Entrenador Jose = new Entrenador(2,32001002, "Jose Enrique", "Zuñiga", "Crossfit", true);
+        Entrenador Tomas = new Entrenador(1,45001002, "Tomas Emiliano", "Carrillo", "Calistenia", true);
         Entrenador Juanjo = new Entrenador(5, 35001002, "Juan Jose", "Perez", "Boxeo", true);
 
         Socio enrique = new Socio("39001002", "Enrique pascual", "Tozo", 22, "enrique@hotmail.com", 261333111, true);
@@ -32,6 +32,12 @@ public class ProyectoFinalG18 {
         Membresia membresia = new Membresia(pablo, 30, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
         Membresia membresia2 = new Membresia(6,marcela,14, LocalDate.of(2024, 06, 05), LocalDate.of(2024,07 , 06), 13500, true);
         
+        Clase cl= new Clase(1,"Boxeo Profesional",Juanjo,LocalTime.of(17, 00),12,true);
+        Clase c2= new Clase("Fullbody",Luis,LocalTime.of(16, 00),15,true);
+        Clase c3= new Clase("Spinning",Candela,LocalTime.of(18, 00),13,true);
+        Clase c4= new Clase(8,"Crossfit",Jose,LocalTime.of(19, 00),15,true);
+        Clase c5= new Clase("Calistenia",Tomas,LocalTime.of(20, 00),11,true);
+        
         
         ////PRUEBAS ASISTENCIA DATA ////
             
@@ -40,13 +46,23 @@ public class ProyectoFinalG18 {
             
             
         ////PRUEBAS CLASE DATA ////
-//     //agregar clase a la DB
-//       LocalTime hora = LocalTime.of(17, 00, 00);
-//       Clase cl= new Clase("boxeo",Juanjo,hora,10,true);
-//       
-//       ClaseData cd= new ClaseData();
-//       
-//       cd.guardarClase(cl);
+        ClaseData cD= new ClaseData();
+        
+//     //Agregar clase a la DB
+//        cD.guardarClase(cl);
+//        cD.guardarClase(c2);
+//        cD.guardarClase(c3);
+//        cD.guardarClase(c4);
+//        cD.guardarClase(c5);
+       //Eliminar clase
+//       cD.eliminarClase(1);
+       //Listar Clases
+//        System.out.println(""+cD.listarClases());
+       //Buscar Clase
+//        System.out.println(""+cD.buscarClasePorNombre("Fullbody"));
+       //Modificar capacidad
+//       cD.ModificarCapacidadClase(c4);
+
 
 
 
@@ -61,8 +77,9 @@ public class ProyectoFinalG18 {
         //sD.guardarSocio(fabiana);
         //sD.actualizarSocio(fabiana);
         //System.out.println(""+sD.listarSociosActivos());
-        //System.out.println(""+sD.buscarSocioPorNumeroSocio("38001002"));
+        //System.out.println(""+sD.buscarSocioPorNumeroDni("38001002"));
         //sD.eliminarSocio(3);
+        
 
         
         
@@ -79,7 +96,8 @@ public class ProyectoFinalG18 {
 //        mD.eliminarMembresia(4);
         //Modificar Membresia
         //mD.modificarMembresia(membresia2);
-
+        //Modificar cantidad de pases 
+//        mD.modificarCantidadPases(membresia2);
 
 
 

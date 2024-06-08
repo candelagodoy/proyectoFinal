@@ -132,7 +132,7 @@ public class SocioData {
         return socios; 
     }
     
-    public Socio buscarSocioPorNumeroSocio(String dni){ //Probado Funcionando
+    public Socio buscarSocioPorNumeroDni(String dni){ //Probado Funcionando
         Socio socio = null;
         String sql = "SELECT IdSocio, nombre, apellido, edad, correo, telefono FROM socio WHERE dni = ? AND estado = 1";
         try {

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class MembresiaData {
@@ -90,9 +92,9 @@ public class MembresiaData {
             ps.setDate(3, Date.valueOf(membresia.getFechaInicio()));
             ps.setDate(4, Date.valueOf(membresia.getFechaFin()));
             ps.setDouble(5, membresia.getCosto());
-           
             ps.setInt(6, membresia.getIdMembresia());
             int filas = ps.executeUpdate();
+            
             if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Membresia modificada exitosamente. ");
             } else {
@@ -157,4 +159,28 @@ public class MembresiaData {
 
     }
 
+    public void modificarCantidadPases(Membresia membresia){
+        String sql = "UPDATE membresia SET cantidadPases=? WHERE IdSocio=?";
+        
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, (membresia.getCantidadPases()-1));
+            ps.setInt(2, membresia.getSocio().getIdSocio());
+            
+            int exito = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Cantidad de pases reducida exitosamente");
+            
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se encontró la membresia");
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Membresia");
+        }
+    
+    }
 }
