@@ -19,7 +19,7 @@ public class EntrenadorData {
 
     }
 
-    public void guardarEntrenador(Entrenador entrenador) {
+    public void guardarEntrenador(Entrenador entrenador) { //Probado y funcionando
         try {
             String sql = "INSERT INTO entrenador(dni, apellido, nombre, especialidad, estado) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -43,7 +43,7 @@ public class EntrenadorData {
 
     }
 
-    public Entrenador buscarEntrenador(int id) {
+    public Entrenador buscarEntrenador(int id) { //Probado y funcionando 
 
         Entrenador entrenador = null;
         String sql = "SELECT dni, apellido, nombre, especialidad FROM entrenador WHERE  IdEntrenador = ? AND estado = 1";
@@ -72,7 +72,7 @@ public class EntrenadorData {
 
     }
 
-    public Entrenador buscarEntrenadorPorDni(int dni) {
+    public Entrenador buscarEntrenadorPorDni(int dni) {  //Probado y funcionando
         Entrenador entrenador = null;
         String sql = "SELECT IdEntrenador, dni, apellido, nombre, especialidad FROM entrenador WHERE dni=? AND estado = 1";
         PreparedStatement ps = null;
@@ -100,7 +100,7 @@ public class EntrenadorData {
         return entrenador;
     }
 
-    public List<Entrenador> listarEntrenadores() {
+    public List<Entrenador> listarEntrenadores() {  //Probado y funcionando
         List<Entrenador> entrenadores = new ArrayList<>();
         String sql = "SELECT * FROM entrenador WHERE estado = 1 ";
 
@@ -127,7 +127,7 @@ public class EntrenadorData {
 
     }
 
-    public void modificarEntrenador(Entrenador entrenador) {
+    public void modificarEntrenador(Entrenador entrenador) { //Probado "Entrenador no Encontrado"
         String sql = "UPDATE entrenador SET dni = ? , apellido = ? , nombre = ? , especialidad = ? WHERE IdEntrenador = ?";
 
         try {
@@ -153,7 +153,7 @@ public class EntrenadorData {
 
     }
 
-    public void eliminarEntrenador(int id) {
+    public void eliminarEntrenador(int id) { //Probado y Funcionando
         String sql = "UPDATE Entrenador SET estado = 0 WHERE idEntrenador = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);

@@ -20,7 +20,7 @@ public class SocioData {
         con = Conexion.getConexion();
     }
     
-    public void guardarSocio(Socio socio){
+    public void guardarSocio(Socio socio){ //Probado y Funcionando
         String sql = "INSERT INTO socio(dni,nombre, apellido,edad,correo,telefono,estado) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -50,15 +50,15 @@ public class SocioData {
     
     public void actualizarSocio(Socio socio){
         try {
-            String sql = "UPDATE socio SET IdSocio=?,dni=?,nombre=?,apellido=?,edad=?,correo=?,telefono=? WHERE idSocio=?";
+            String sql = "UPDATE socio SET dni = ?,nombre = ?,apellido = ?,edad = ?,correo = ?,telefono = ? WHERE idSocio = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, socio.getIdSocio());
-            ps.setString(2, socio.getDni());
-            ps.setString(3, socio.getNombre());
-            ps.setString(4, socio.getApellido());
-            ps.setInt(5, socio.getEdad());
-            ps.setString(6, socio.getCorreo());
-            ps.setInt(7, socio.getTelefono());
+           
+            ps.setString(1, socio.getDni());
+            ps.setString(2, socio.getNombre());
+            ps.setString(3, socio.getApellido());
+            ps.setInt(4, socio.getEdad());
+            ps.setString(5, socio.getCorreo());
+            ps.setInt(6, socio.getTelefono());
             
             int exito = ps.executeUpdate();
             
@@ -78,7 +78,7 @@ public class SocioData {
         
     }
     
-    public void eliminarSocio(int idSocio){
+    public void eliminarSocio(int idSocio){ //Probado Funcionando 
         
         try {
             String sql="UPDATE socio SET estado = 0 WHERE idSocio=?";
@@ -99,7 +99,7 @@ public class SocioData {
         
     }
     
-    public List<Socio> listarSociosActivos(){
+    public List<Socio> listarSociosActivos(){ //Probado Error al acceder a la tabla socio
         List<Socio> socios = new ArrayList<>();
         
         try {
@@ -129,22 +129,23 @@ public class SocioData {
         return socios; 
     }
     
-    public Socio buscarSocioPorNumeroSocio(int id){
+    public Socio buscarSocioPorNumeroSocio(int id){ //Probado Funciona pero no devuelve ningun dato
         Socio socio = null;
         try {
-            String sql = "SELECT dni, nombre, apellido, edad, correo, telefono FROM socio WHERE idSocio = ? AND estado = 1";
+            String sql = "SELECT IdSocio, dni, nombre, apellido, edad, correo, telefono FROM socio WHERE IdSocio = ? AND estado = 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet resultado = ps.executeQuery();
             if(resultado.next()){
                 socio = new Socio();
-                socio.setIdSocio(id);
+                socio.setIdSocio(resultado.getInt("IdSocio"));
                 socio.setDni(resultado.getString("dni"));
                 socio.setNombre(resultado.getString("nombre"));
                 socio.setApellido(resultado.getString("apellido"));
                 socio.setEdad(resultado.getInt("edad"));
                 socio.setCorreo(resultado.getString("correo"));
                 socio.setTelefono(resultado.getInt("telefono"));   
+                socio.setEstado(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "No existe el socio");

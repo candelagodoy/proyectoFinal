@@ -26,11 +26,11 @@ public class ProyectoFinalG18 {
        Entrenador Candela = new Entrenador(39001002," Candela Guadalupe", "Godoy", "Spinning", true);
        Entrenador Jose = new Entrenador (32001002,"Jose Enrique", "Zuñiga", "Crossfit", true);
        Entrenador Tomas = new Entrenador (45001002,"Tomas Emiliano", "Carrillo","Calistenia", true);
-       Entrenador Juanjo = new Entrenador (1,35001002,"Juan Jose", "Perez", "Boxeo", true);
+       Entrenador Juanjo = new Entrenador (6,32001002,"Juan Jose", "Perezo", "Boxeo", true);
        
        Socio enrique= new Socio("39001002", "Enrique pascual", "Tozo", 22, "enrique@hotmail.com", 261333111, true);
-       Socio pablo= new Socio("38001002", "Pablo Lorenzo", "Poder", 25, "pablo@gmail.com", 261221222, true);
-
+       Socio pablo= new Socio(3,"38001002", "Pablo Lorenzo", "Gonzalez", 25, "pablo@gmail.com", 261221222, true);
+       Socio fabiana= new Socio(6,"40001002", "Fabiana ", "Ramis", 19,"fabi@hotmail.com",261441442, true);
 
 
 
@@ -82,9 +82,11 @@ SocioData sD= new SocioData();
         
 //        sD.guardarSocio(enrique);
  //         sD.guardarSocio(pablo);
-        
- 
- 
+ //sD.guardarSocio(fabiana);
+  sD.actualizarSocio(fabiana);
+  //      System.out.println(""+sD.listarSociosActivos());
+ //sD.buscarSocioPorNumeroSocio(2);
+ //sD.eliminarSocio(3);
  
  
  
@@ -96,9 +98,9 @@ SocioData sD= new SocioData();
  
      ////Pruebas MembresiaData////
  
-       MembresiaData mD= new MembresiaData();
-       Membresia membresia = new Membresia(pablo, 30, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
-       mD.guardarMembresia(membresia);
+//       MembresiaData mD= new MembresiaData();
+//       Membresia membresia = new Membresia(pablo, 30, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
+//       mD.guardarMembresia(membresia);
         //Buscar Membresia 
         
 //       System.out.println(""+mD.buscarMembresia("39001002"));
@@ -116,7 +118,7 @@ SocioData sD= new SocioData();
         //Pruebas EntrenadorData
 
 
-//       EntrenadorData eD= new EntrenadorData();
+       EntrenadorData eD= new EntrenadorData();
        
        //Insertar nuevos Entrenadores 
        
@@ -135,7 +137,7 @@ SocioData sD= new SocioData();
 
      //Busqueda por Dni 
      
-//       System.out.println(""+ eD.buscarEntrenadorPorDni(37412834));
+ //      System.out.println(""+ eD.buscarEntrenadorPorDni(35001002));
 
 
 
@@ -145,9 +147,9 @@ SocioData sD= new SocioData();
 
 
     //Modificar y Eliminar un Entrenador 
+//    eD.modificarEntrenador(Juanjo);
     
-    
-    
+ //   eD.eliminarEntrenador(5);
       
     }
     
