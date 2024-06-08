@@ -1,9 +1,11 @@
 package proyectofinalg18;
 
+import accesoADatos.AsistenciaData;
 import accesoADatos.ClaseData;
 import accesoADatos.EntrenadorData;
 import accesoADatos.MembresiaData;
 import accesoADatos.SocioData;
+import entidades.Asistencia;
 import entidades.Clase;
 import entidades.Entrenador;
 import entidades.Membresia;
@@ -23,7 +25,7 @@ public class ProyectoFinalG18 {
         Entrenador Tomas = new Entrenador(1,45001002, "Tomas Emiliano", "Carrillo", "Calistenia", true);
         Entrenador Juanjo = new Entrenador(5, 35001002, "Juan Jose", "Perez", "Boxeo", true);
 
-        Socio enrique = new Socio("39001002", "Enrique pascual", "Tozo", 22, "enrique@hotmail.com", 261333111, true);
+        Socio enrique = new Socio(1,"39001002", "Enrique pascual", "Tozo", 22, "enrique@hotmail.com", 261333111, true);
         Socio pablo = new Socio(2,"38001002", "Pablo Lorenzo", "Gonzalez", 25, "pablo@gmail.com", 261221222, true);
         Socio fabiana = new Socio(3,"40001002", "Fabiana ", "Ramis", 19, "fabi@hotmail.com", 261441442, true);
         Socio marcela = new Socio(4,"37548964", "Marcela", "Gomez", 27, "marce@hotmail.com", 266487545, true);
@@ -36,12 +38,18 @@ public class ProyectoFinalG18 {
         Clase c2= new Clase("Fullbody",Luis,LocalTime.of(16, 00),15,true);
         Clase c3= new Clase("Spinning",Candela,LocalTime.of(18, 00),13,true);
         Clase c4= new Clase(8,"Crossfit",Jose,LocalTime.of(19, 00),15,true);
-        Clase c5= new Clase("Calistenia",Tomas,LocalTime.of(20, 00),11,true);
+        Clase c5= new Clase(9,"Calistenia",Tomas,LocalTime.of(20, 00),11,true);
+        
+        
+        Asistencia a1 = new Asistencia(enrique,c4,LocalDate.of(2024, 06, 05));
+        Asistencia a2 = new Asistencia(pablo,c5,LocalDate.of(2024, 06, 10));
+
         
         
         ////PRUEBAS ASISTENCIA DATA ////
-            
-            
+        AsistenciaData aD=new AsistenciaData();    
+//        aD.guardarAsistencia(a1);
+//        aD.guardarAsistencia(a2);
             
             
             

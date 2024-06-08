@@ -1,19 +1,20 @@
 
 package entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Asistencia {
     private int IdAsistencia;
     private Socio socio;
     private Clase clase;
-    private Date FechaAsistencia;
+    private LocalDate FechaAsistencia;
 
     public Asistencia() {
 
     }
 
-    public Asistencia(int IdAsistencia, Socio socio, Clase clase, Date FechaAsistencia) {
+    public Asistencia(int IdAsistencia, Socio socio, Clase clase, LocalDate FechaAsistencia) {
         this.IdAsistencia = IdAsistencia;
         this.socio = socio;
         this.clase= clase;
@@ -21,7 +22,7 @@ public class Asistencia {
 
     }
 
-    public Asistencia(Socio socio, Clase clase, Date FechaAsistencia) {
+    public Asistencia(Socio socio, Clase clase, LocalDate FechaAsistencia) {
         this.socio = socio;
         this.clase = clase;
         this.FechaAsistencia = FechaAsistencia;
@@ -53,11 +54,11 @@ public class Asistencia {
 
     
 
-    public Date getFechaAsistencia() {
+    public LocalDate getFechaAsistencia() {
         return FechaAsistencia;
     }
 
-    public void setFechaAsistencia(Date FechaAsistencia) {
+    public void setFechaAsistencia(LocalDate FechaAsistencia) {
         this.FechaAsistencia = FechaAsistencia;
     }
 
