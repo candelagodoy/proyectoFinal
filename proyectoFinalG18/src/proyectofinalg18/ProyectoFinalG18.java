@@ -36,21 +36,31 @@ public class ProyectoFinalG18 {
         
         Clase cl= new Clase(1,"Boxeo Profesional",Juanjo,LocalTime.of(17, 00),12,true);
         Clase c2= new Clase("Fullbody",Luis,LocalTime.of(16, 00),15,true);
-        Clase c3= new Clase("Spinning",Candela,LocalTime.of(18, 00),13,true);
+        Clase c3= new Clase(7,"Spinning",Candela,LocalTime.of(18, 00),13,true);
         Clase c4= new Clase(8,"Crossfit",Jose,LocalTime.of(19, 00),15,true);
         Clase c5= new Clase(9,"Calistenia",Tomas,LocalTime.of(20, 00),11,true);
         
         
         Asistencia a1 = new Asistencia(enrique,c4,LocalDate.of(2024, 06, 05));
-        Asistencia a2 = new Asistencia(pablo,c5,LocalDate.of(2024, 06, 10));
+        Asistencia a2 = new Asistencia(7,pablo,c4,LocalDate.of(2024, 06, 10));
+        Asistencia a3 = new Asistencia(enrique,c5,LocalDate.of(2024, 06, 07)); 
+        Asistencia a4 = new Asistencia(marcela, c3,LocalDate.of(2024, 06, 11));
 
         
         
         ////PRUEBAS ASISTENCIA DATA ////
-        AsistenciaData aD=new AsistenciaData();    
+        AsistenciaData aD=new AsistenciaData();   
+        //Guardando Asistencias
 //        aD.guardarAsistencia(a1);
 //        aD.guardarAsistencia(a2);
-            
+//        aD.guardarAsistencia(a3);
+//        aD.guardarAsistencia(a4);
+        //Eliminando una asistencia
+//        aD.eliminarAsistencia(1, 8);
+        //Modificando Asistencia 
+//        aD.modificarAsistencia(a2);
+        //Listando Asistencias
+        System.out.println(""+aD.listandoAsistencia());
             
             
         ////PRUEBAS CLASE DATA ////
