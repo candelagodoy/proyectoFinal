@@ -60,7 +60,9 @@ public class ProyectoFinalG18 {
         //Modificando Asistencia 
 //        aD.modificarAsistencia(a2);
         //Listando Asistencias
-        System.out.println(""+aD.listandoAsistencia());
+//        System.out.println(""+aD.listandoAsistencia());
+        //Listando Asistencias por Socio
+//        System.out.println(""+aD.asistenciaPorSocio(1));
             
             
         ////PRUEBAS CLASE DATA ////
@@ -80,6 +82,8 @@ public class ProyectoFinalG18 {
 //        System.out.println(""+cD.buscarClasePorNombre("Fullbody"));
        //Modificar capacidad
 //       cD.ModificarCapacidadClase(c4);
+       //Modificar clase 
+       cD.ModificarClase(cl);
 
 
 

@@ -64,7 +64,7 @@ public class Asistencia {
 
     @Override
     public String toString() {
-        return "Asistencia{" + "IdAsistencia=" + IdAsistencia + ", Socio=" + socio.getIdSocio() + ", Clase=" + clase.getIdClase() + ", FechaAsistencia=" + '}' + "\n";
+        return "Asistencia{" + "IdAsistencia=" + IdAsistencia + ", Socio=" + socio.getIdSocio() + ", Clase=" + clase.getIdClase() + ", FechaAsistencia=" + FechaAsistencia+ '}' + "\n";
 
     }
 

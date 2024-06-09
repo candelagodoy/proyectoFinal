@@ -99,7 +99,7 @@ public class AsistenciaData {
         
         
     }
-    public List<Asistencia> listandoAsistencia(){
+    public List<Asistencia> listandoAsistencia(){//PROBADO Y FUNCIONANDO
         List<Asistencia> asistencias = new ArrayList();
         
         try {
@@ -128,4 +128,35 @@ public class AsistenciaData {
         }
         return asistencias;
     }
+    
+    public List<Asistencia> asistenciaPorSocio(int idSocio){//PROBADO Y FUNCIONANDO
+        List<Asistencia> asistencias = new ArrayList();
+        String sql = "SELECT IdAsistencia, IdSocio, IdClase, FechaAsistencia FROM asistencia WHERE IdSocio=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idSocio);
+            ResultSet resultado = ps.executeQuery();
+            while(resultado.next()){
+                Asistencia asistencia = new Asistencia();
+                Socio socio = new Socio();
+                Clase clase = new Clase();
+                
+                asistencia.setIdAsistencia(resultado.getInt("IdAsistencia"));
+                socio.setIdSocio(resultado.getInt("IdSocio"));
+                asistencia.setSocio(socio);
+                clase.setIdClase(resultado.getInt("IdClase"));
+                asistencia.setClase(clase);
+                asistencia.setFechaAsistencia(resultado.getDate("FechaAsistencia").toLocalDate());
+                asistencias.add(asistencia);
+            
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Asistencia");
+        }
+        return asistencias;
+    }
+    
+    
 }

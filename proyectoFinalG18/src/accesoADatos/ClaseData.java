@@ -134,6 +134,32 @@ public class ClaseData {
 
         return clase;
     }
+    
+    public void ModificarClase(Clase clase){
+        String sql = "UPDATE clase SET nombre = ?, IdEntrenador = ? , horario = ? , capacidad=? WHERE IdClase=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, clase.getNombre());
+            ps.setInt(2, clase.getentrenador().getIdEntrenador());
+            ps.setTime(3, Time.valueOf(clase.getHorario()));
+            ps.setInt(4, clase.getCapacidad());
+            ps.setInt(5, clase.getIdClase());
+            int filas = ps.executeUpdate();
+            if(filas == 1){
+                JOptionPane.showMessageDialog(null, "Clase modificada con éxito!");
+            
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Clase no encontrada");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla clase ");
+        }
+    
+    
+    }
 
     public void ModificarCapacidadClase(Clase clase){//PROBADO Y FUNCIONANDO
         String sql = "UPDATE clase SET capacidad = ? WHERE IdClase=?";
