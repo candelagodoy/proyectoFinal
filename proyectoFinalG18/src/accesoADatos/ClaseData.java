@@ -135,7 +135,7 @@ public class ClaseData {
         return clase;
     }
     
-    public void ModificarClase(Clase clase){
+    public void ModificarClase(Clase clase){ //probado y funcionando
         String sql = "UPDATE clase SET nombre = ?, IdEntrenador = ? , horario = ? , capacidad=? WHERE IdClase=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);

@@ -64,6 +64,7 @@ public class ProyectoFinalG18 {
         //Listando Asistencias por Socio
 //        System.out.println(""+aD.asistenciaPorSocio(1));
             
+
             
         ////PRUEBAS CLASE DATA ////
         ClaseData cD= new ClaseData();
@@ -83,7 +84,7 @@ public class ProyectoFinalG18 {
        //Modificar capacidad
 //       cD.ModificarCapacidadClase(c4);
        //Modificar clase 
-       cD.ModificarClase(cl);
+//       cD.ModificarClase(cl);
 
 
 
