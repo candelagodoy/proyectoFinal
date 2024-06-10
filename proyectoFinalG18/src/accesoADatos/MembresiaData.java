@@ -55,7 +55,7 @@ public class MembresiaData {
     public Membresia buscarMembresia(String dni) {// Listo y Probado 
         Membresia membresia = null;
         Socio socio= null;
-        String sql = "SELECT s.nombre, s.apellido, m.cantidadPases, m.FechaFin FROM membresia m join socio s on (m.IdSocio= s.IdSocio)  WHERE m.estado = 1 and s.estado = 1 and s.dni = ?";
+        String sql = "SELECT s.IdSocio, s.nombre, s.apellido,m.IdMembresia, m.cantidadPases, m.FechaFin FROM membresia m join socio s on (m.IdSocio= s.IdSocio)  WHERE m.estado = 1 and s.estado = 1 and s.dni = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -64,12 +64,14 @@ public class MembresiaData {
             if (resultado.next()) {
                 membresia = new Membresia();
                 socio= new Socio(); 
+                socio.setIdSocio(resultado.getInt("IdSocio"));
                 socio.setNombre(resultado.getString("nombre"));
                 socio.setApellido(resultado.getString("apellido"));
+                membresia.setIdMembresia(resultado.getInt("IdMembresia"));
                 membresia.setCantidadPases(resultado.getInt("CantidadPases"));
                 membresia.setFechaFin(resultado.getDate("FechaFin").toLocalDate());                 
                 membresia.setSocio(socio);
-
+               
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la Membresia. ");
             }

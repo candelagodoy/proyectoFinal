@@ -32,7 +32,7 @@ public class ProyectoFinalG18 {
         
 
         Membresia membresia = new Membresia(pablo, 30, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
-        Membresia membresia2 = new Membresia(6,marcela,14, LocalDate.of(2024, 06, 05), LocalDate.of(2024,07 , 06), 13500, true);
+        Membresia membresia2 = new Membresia(6,marcela,13, LocalDate.of(2024, 06, 05), LocalDate.of(2024,07 , 06), 13500, true);
         
         Clase cl= new Clase(1,"Boxeo Profesional",Juanjo,LocalTime.of(17, 00),12,true);
         Clase c2= new Clase("Fullbody",Luis,LocalTime.of(16, 00),15,true);
@@ -45,6 +45,7 @@ public class ProyectoFinalG18 {
         Asistencia a2 = new Asistencia(7,pablo,c4,LocalDate.of(2024, 06, 10));
         Asistencia a3 = new Asistencia(enrique,c5,LocalDate.of(2024, 06, 07)); 
         Asistencia a4 = new Asistencia(marcela, c3,LocalDate.of(2024, 06, 11));
+        Asistencia a5 = new Asistencia(marcela, c3,LocalDate.of(2024, 06, 10));
 
         
         
@@ -55,6 +56,7 @@ public class ProyectoFinalG18 {
 //        aD.guardarAsistencia(a2);
 //        aD.guardarAsistencia(a3);
 //        aD.guardarAsistencia(a4);
+          aD.guardarAsistencia(a5);
         //Eliminando una asistencia
 //        aD.eliminarAsistencia(1, 8);
         //Modificando Asistencia 
