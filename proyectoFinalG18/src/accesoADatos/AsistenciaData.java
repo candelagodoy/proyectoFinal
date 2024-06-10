@@ -43,8 +43,6 @@ public class AsistenciaData {
                asistencia.setIdAsistencia(resultado.getInt(1));
                String dni=asistencia.getSocio().getDni();
                Membresia membre = membresiaData.buscarMembresia(dni);
-                System.out.println(membre);
-                System.out.println(dni);
                membresiaData.modificarCantidadPases(membre);
               
                JOptionPane.showMessageDialog(null, "Asistencia agregada con exito!");

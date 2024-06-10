@@ -4,11 +4,18 @@
  */
 package vistas;
 
+import accesoADatos.SocioData;
+import entidades.Socio;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Candela
  */
 public class SocioVista extends javax.swing.JInternalFrame {
+
+    private SocioData socioData = new SocioData();
+    private Socio socioActual = null;
 
     /**
      * Creates new form SocioVista
@@ -56,6 +63,11 @@ public class SocioVista extends javax.swing.JInternalFrame {
         jLabel3.setText("Apellido:");
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/lupa_1.png"))); // NOI18N
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Edad:");
 
@@ -66,12 +78,32 @@ public class SocioVista extends javax.swing.JInternalFrame {
         jLabel7.setText("DNI:");
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Estado");
 
@@ -223,6 +255,97 @@ public class SocioVista extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+            Integer dni = Integer.parseInt(jTDni.getText());
+            socioActual = socioData.buscarSocioPorNumeroDni(dni+"");
+            if (socioActual != null) {
+                jTNombre.setText(socioActual.getNombre());
+                jTApellido.setText(socioActual.getApellido());
+                jTEdad.setText(socioActual.getEdad() + "");
+                jTTelefono.setText(socioActual.getTelefono() + "");
+                jTCorreo.setText(socioActual.getCorreo());
+                jREstado.setSelected(socioActual.isEstado());
+            }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"Debe Ingresar un dni válido");
+        }
+
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+        if (socioActual != null) {
+            socioData.eliminarSocio(socioActual.getIdSocio());
+            socioActual = null;
+            limpiarCampos();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay un socio seleccionado");
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+        try {
+            String dni = jTDni.getText();
+            String nombre = jTNombre.getText();
+            String apellido = jTApellido.getText();
+            Integer edad = Integer.parseInt(jTEdad.getText());
+            Integer telefono = Integer.parseInt(jTTelefono.getText());
+            String correo = jTCorreo.getText();
+            boolean estado = jREstado.isSelected();
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar su nombre");
+            } else if (apellido.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar su apellido");
+            } else if (correo.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar su correo");
+
+            }
+            if (socioActual == null) {
+                socioActual = new Socio(dni, nombre, apellido, edad, correo, telefono, estado);
+                socioData.guardarSocio(socioActual);
+                limpiarCampos();
+            } else {
+                socioActual.setApellido(apellido);
+                socioActual.setNombre(nombre);
+                socioActual.setCorreo(correo);
+                socioActual.setDni(dni);
+                socioActual.setEdad(edad);
+                socioActual.setEstado(estado);
+                socioActual.setTelefono(telefono);
+                socioData.actualizarSocio(socioActual);
+                limpiarCampos();
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Los campos DNI,EDAD y TELEFONO deben ser numéricos");
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    public void limpiarCampos() {
+        jTNombre.setText("");
+        jTApellido.setText("");
+        jTDni.setText("");
+        jTEdad.setText("");
+        jTTelefono.setText("");
+        jTCorreo.setText("");
+        jREstado.setSelected(false);
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

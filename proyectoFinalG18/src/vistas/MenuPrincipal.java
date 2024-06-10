@@ -4,6 +4,8 @@
  */
 package vistas;
 
+import static java.awt.Color.blue;
+
 /**
  *
  * @author Candela
@@ -63,9 +65,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMSocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/socio.png"))); // NOI18N
 
         jMenuItem2.setText("Agregar o buscar socio");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMSocio.add(jMenuItem2);
 
         jMenuItem7.setText("Mostrar Socios");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMSocio.add(jMenuItem7);
 
         jMenuBar1.add(jMSocio);
@@ -73,9 +85,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMClase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/clase.png"))); // NOI18N
 
         jMenuItem3.setText("Agregar clase");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMClase.add(jMenuItem3);
 
         jMenuItem9.setText("Mostrar clases activas");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMClase.add(jMenuItem9);
 
         jMenuBar1.add(jMClase);
@@ -83,9 +105,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/entrenador.png"))); // NOI18N
 
         jMenuItem4.setText("Agregar entrenador");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMEntrenador.add(jMenuItem4);
 
         jMenuItem8.setText("Mostrar entrenadores");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMEntrenador.add(jMenuItem8);
 
         jMenuBar1.add(jMEntrenador);
@@ -93,9 +125,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMMembresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/membresia.png"))); // NOI18N
 
         jMenuItem5.setText("Agregar membresia");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMMembresia.add(jMenuItem5);
 
         jMenuItem10.setText("Buscar membresia");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMMembresia.add(jMenuItem10);
 
         jMenuBar1.add(jMMembresia);
@@ -103,11 +145,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/asistencia.png"))); // NOI18N
 
         jMenuItem6.setText("Agregar asistencia");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMAsistencia.add(jMenuItem6);
 
         jMenuBar1.add(jMAsistencia);
 
         jMSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/salir.png"))); // NOI18N
+        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMSalir);
 
         setJMenuBar(jMenuBar1);
@@ -125,6 +177,103 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        SocioVista socio = new SocioVista();
+        socio.setVisible(true);
+        socio.getContentPane().setBackground(blue);
+        escritorio.add(socio);
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaSocios Lsocio = new ListaSocios();
+        Lsocio.setVisible(true);
+        Lsocio.getContentPane().setBackground(blue);
+        escritorio.add(Lsocio);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ClaseVista clase = new ClaseVista();
+        clase.setVisible(true);
+        clase.getContentPane().setBackground(blue);
+        escritorio.add(clase);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaClasesActivas Lclases= new ListaClasesActivas();
+        Lclases.setVisible(true);
+        Lclases.getContentPane().setBackground(blue);
+        escritorio.add(Lclases);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        EntrenadorVista entrenador = new EntrenadorVista();
+        entrenador.setVisible(true);
+        entrenador.getContentPane().setBackground(blue);
+        escritorio.add(entrenador);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaEntrenadoresActivos Lentrenadores = new ListaEntrenadoresActivos();
+        Lentrenadores.setVisible(true);
+        Lentrenadores.getContentPane().setBackground(blue);
+        escritorio.add(Lentrenadores);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        MembresiaVista membresia = new MembresiaVista();
+        membresia.setVisible(true);
+        membresia.getContentPane().setBackground(blue);
+        escritorio.add(membresia);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaMembresia Lmembresia = new ListaMembresia();
+        Lmembresia.setVisible(true);
+        Lmembresia.getContentPane().setBackground(blue);
+        escritorio.add(Lmembresia);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AsistenciaVista asistencia = new AsistenciaVista();
+        asistencia.setVisible(true);
+        asistencia.getContentPane().setBackground(blue);
+        escritorio.add(asistencia);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMSalirMouseClicked
 
     /**
      * @param args the command line arguments
