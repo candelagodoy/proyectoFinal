@@ -30,10 +30,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMSocio = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMClase = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMEntrenador = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMMembresia = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMAsistencia = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMSalir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -52,18 +61,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         jMSocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/socio.png"))); // NOI18N
+
+        jMenuItem2.setText("Agregar o buscar socio");
+        jMSocio.add(jMenuItem2);
+
+        jMenuItem7.setText("Mostrar Socios");
+        jMSocio.add(jMenuItem7);
+
         jMenuBar1.add(jMSocio);
 
         jMClase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/clase.png"))); // NOI18N
+
+        jMenuItem3.setText("Agregar clase");
+        jMClase.add(jMenuItem3);
+
+        jMenuItem9.setText("Mostrar clases activas");
+        jMClase.add(jMenuItem9);
+
         jMenuBar1.add(jMClase);
 
         jMEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/entrenador.png"))); // NOI18N
+
+        jMenuItem4.setText("Agregar entrenador");
+        jMEntrenador.add(jMenuItem4);
+
+        jMenuItem8.setText("Mostrar entrenadores");
+        jMEntrenador.add(jMenuItem8);
+
         jMenuBar1.add(jMEntrenador);
 
         jMMembresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/membresia.png"))); // NOI18N
+
+        jMenuItem5.setText("Agregar membresia");
+        jMMembresia.add(jMenuItem5);
+
+        jMenuItem10.setText("Buscar membresia");
+        jMMembresia.add(jMenuItem10);
+
         jMenuBar1.add(jMMembresia);
 
         jMAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/asistencia.png"))); // NOI18N
+
+        jMenuItem6.setText("Agregar asistencia");
+        jMAsistencia.add(jMenuItem6);
+
         jMenuBar1.add(jMAsistencia);
 
         jMSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/salir.png"))); // NOI18N
@@ -130,5 +171,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMSocio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
