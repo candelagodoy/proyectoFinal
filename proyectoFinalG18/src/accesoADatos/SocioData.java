@@ -132,6 +132,38 @@ public class SocioData {
         return socios; 
     }
     
+    public List<Socio> listarTodosLosSocios(){
+        List<Socio> socios = new ArrayList<>();
+        String sql = "SELECT * FROM socio";
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
+            while(resultado.next()){
+                Socio socio = new Socio();
+                socio.setIdSocio(resultado.getInt("IdSocio"));
+                socio.setDni(resultado.getString("dni"));
+                socio.setNombre(resultado.getString("nombre"));
+                socio.setApellido(resultado.getString("apellido"));
+                socio.setEdad(resultado.getInt("edad"));
+                socio.setCorreo(resultado.getString("correo"));
+                socio.setTelefono(resultado.getInt("telefono"));
+                socio.setEstado(resultado.getBoolean("estado"));
+                socios.add(socio);
+            }
+            
+            ps.close();
+             
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla socio");
+        }
+        
+        return socios; 
+    
+    }
+    
+    
     public Socio buscarSocioPorNumeroDni(String dni){ //Probado Funcionando
         Socio socio = null;
         String sql = "SELECT IdSocio, nombre, apellido, edad, correo, telefono FROM socio WHERE dni = ? AND estado = 1";

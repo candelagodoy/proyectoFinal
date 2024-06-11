@@ -104,7 +104,7 @@ public class Socio {
     
     @Override
     public String toString() {
-        return "Socio{" + "IdSocio=" + IdSocio + ", Dni=" + Dni + ", apellido=" + apellido + ", nombre=" + nombre + ", edad=" + edad +",correo=" + correo + ",telefono=" + telefono + ", estado=" + estado + '}'+"\n";
+        return  IdSocio + "-" + nombre+ "" + apellido;
     
         
     }

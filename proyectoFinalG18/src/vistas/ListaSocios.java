@@ -4,17 +4,30 @@
  */
 package vistas;
 
+import accesoADatos.SocioData;
+import entidades.Socio;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Candela
  */
 public class ListaSocios extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListaSocios
-     */
+    private SocioData socioData = new SocioData();
+    
+    private List<Socio> LSociosActivos;
+    private List<Socio> LTodosSocios;
+    private DefaultTableModel modelo;
+    
     public ListaSocios() {
         initComponents();
+        modelo = new DefaultTableModel();
+        armarCabecera();
+        cargarTodosSocios();
+        
     }
 
     /**
@@ -26,23 +39,29 @@ public class ListaSocios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTSocios = new javax.swing.JTable();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jRTodos = new javax.swing.JRadioButton();
         jRActivos = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTSocios = new javax.swing.JTable();
+        jBSalir = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jLabel1.setText("Lista de socios");
+
+        jRTodos.setText("Todos");
+        jRTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRTodosActionPerformed(evt);
+            }
+        });
+
+        jRActivos.setText("Activos");
+        jRActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRActivosActionPerformed(evt);
+            }
+        });
 
         jTSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,53 +76,144 @@ public class ListaSocios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTSocios);
 
-        jRTodos.setText("Todos");
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
-        jRActivos.setText("Activos");
+        jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jRTodos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jRActivos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jBSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel1.setText("Lista de socios");
+        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
+        jDesktopPane2.setLayout(jDesktopPane2Layout);
+        jDesktopPane2Layout.setHorizontalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jRTodos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jRActivos)
+                .addGap(116, 116, 116))
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(310, 310, 310)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDesktopPane2Layout.setVerticalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRTodos)
+                    .addComponent(jRActivos))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBSalir)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jRTodos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRActivos)
-                .addGap(55, 55, 55))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jDesktopPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRTodos)
-                    .addComponent(jRActivos))
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane2)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jRActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRActivosActionPerformed
+        // TODO add your handling code here:
+        
+        borrarFilaTabla();
+        jRActivos.setSelected(true);
+        cargarSociosActivos();
+        
+    }//GEN-LAST:event_jRActivosActionPerformed
+
+    private void jRTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRTodosActionPerformed
+        // TODO add your handling code here:
+        borrarFilaTabla();
+        jRTodos.setSelected(true);
+        cargarTodosSocios();
+        
+    }//GEN-LAST:event_jRTodosActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    public void cargarSociosActivos(){
+        LSociosActivos = socioData.listarSociosActivos();
+        for(Socio s : LSociosActivos){
+            modelo.addRow(new Object[]{s.getIdSocio(), s.getDni(), s.getNombre(),s.getApellido(),s.getEdad(),s.getCorreo(),s.getTelefono(),s.isEstado()});
+        }
+        
+    }
+    
+    public void cargarTodosSocios(){
+        LTodosSocios = socioData.listarTodosLosSocios();
+        for(Socio s : LTodosSocios){
+            modelo.addRow(new Object[]{s.getIdSocio(), s.getDni(), s.getNombre(),s.getApellido(),s.getEdad(),s.getCorreo(),s.getTelefono(),s.isEstado()});
+        }
+        
+    }
+    
+    public void armarCabecera(){
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Id");
+        filaCabecera.add("DNI");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Apellido");
+        filaCabecera.add("Edad");
+        filaCabecera.add("Correo");
+        filaCabecera.add("Telefono");
+        filaCabecera.add("Estado");
+                
+        for(Object it :filaCabecera){
+            modelo.addColumn(it);
+        }
+        jTSocios.setModel(modelo);
+    
+    }
+    
+     private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+        jRActivos.setSelected(false);
+        jRTodos.setSelected(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton jBSalir;
+    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRActivos;
     private javax.swing.JRadioButton jRTodos;
