@@ -84,6 +84,40 @@ public class MembresiaData {
     }
     
     
+    public Membresia buscarMembresiaPorId(int idMembresia){
+        String sql = "SELECT * FROM `membresia` WHERE IdMembresia = ?";
+         Membresia membresia=null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMembresia);
+            ResultSet resultado = ps.executeQuery();
+            
+            if(resultado.next()){
+                Socio socio = new Socio();
+                membresia = new Membresia();
+                socio.setIdSocio(resultado.getInt("IdSocio"));
+                membresia.setSocio(socio);
+                membresia.setCantidadPases(resultado.getInt("cantidadPases"));
+                membresia.setFechaInicio(resultado.getDate("FechaInicio").toLocalDate());
+                membresia.setFechaFin(resultado.getDate("FechaFin").toLocalDate());
+                membresia.setCosto(resultado.getDouble("costo"));
+                membresia.setEstado(resultado.getBoolean("estado"));
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No existe la membresia");
+            
+            }
+            
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "No se puede acceder a la tabla Membresia. ");
+        }
+        
+        return membresia;
+    }
+    
+    
 
     public void modificarMembresia(Membresia membresia) {//PROBADO Y FUNCIONANDO
         try {

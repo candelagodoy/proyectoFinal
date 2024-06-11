@@ -56,7 +56,9 @@ public class ProyectoFinalG18 {
 //        aD.guardarAsistencia(a2);
 //        aD.guardarAsistencia(a3);
 //        aD.guardarAsistencia(a4);
- //         aD.guardarAsistencia(a5);
+ //       aD.guardarAsistencia(a5);
+//        aD.guardarAsistencia(a5);
+
         //Eliminando una asistencia
 //        aD.eliminarAsistencia(1, 8);
         //Modificando Asistencia 
@@ -69,7 +71,8 @@ public class ProyectoFinalG18 {
 
             
         ////PRUEBAS CLASE DATA ////
-        ClaseData cD= new ClaseData();
+        
+        ClaseData cD = new ClaseData();
         
 //     //Agregar clase a la DB
 //        cD.guardarClase(cl);
@@ -123,6 +126,8 @@ public class ProyectoFinalG18 {
         //mD.modificarMembresia(membresia2);
         //Modificar cantidad de pases 
 //        mD.modificarCantidadPases(membresia2);
+        //Buscar membresia por ID
+        System.out.println(mD.buscarMembresiaPorId(6));
 
 
 
