@@ -55,12 +55,26 @@ public class SocioVista extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jREstado = new javax.swing.JRadioButton();
 
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/socio.png"))); // NOI18N
         jLabel1.setText("SOCIO");
 
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Apellido:");
+
+        jTNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTNombreActionPerformed(evt);
+            }
+        });
+
+        jTDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTDniActionPerformed(evt);
+            }
+        });
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/lupa_1.png"))); // NOI18N
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -335,6 +349,14 @@ public class SocioVista extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Los campos DNI,EDAD y TELEFONO deben ser numéricos");
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNombreActionPerformed
+
+    private void jTDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTDniActionPerformed
 
     public void limpiarCampos() {
         jTNombre.setText("");

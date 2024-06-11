@@ -56,7 +56,7 @@ public class ProyectoFinalG18 {
 //        aD.guardarAsistencia(a2);
 //        aD.guardarAsistencia(a3);
 //        aD.guardarAsistencia(a4);
-          aD.guardarAsistencia(a5);
+ //         aD.guardarAsistencia(a5);
         //Eliminando una asistencia
 //        aD.eliminarAsistencia(1, 8);
         //Modificando Asistencia 
@@ -138,9 +138,11 @@ public class ProyectoFinalG18 {
 //       eD.guardarEntrenador(Juanjo);
         //Buscar un Entrenador
         // System.out.println(eD.buscarEntrenadorPoNombre("Jose Enrique"));
-//       eD.buscarEntrenador(2);
+         //System.out.println(""+ eD.buscarEntrenadorPoNombre("Adam"));
+         
         //Busqueda por especialidad
         //System.out.println(""+ eD.buscarEntrenadorPorEspecialidad("Calistenia"));
+        System.out.println(""+ eD.buscarEntrenadorPorEspecialidad("Kickboxing"));
         //Listar Entrenadores 
 //        System.out.println(""+ eD.listarEntrenadores());
         //Modificar y Eliminar un Entrenador 

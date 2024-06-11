@@ -43,7 +43,7 @@ public class EntrenadorData {
 
     }
 
-    public Entrenador buscarEntrenadorPoNombre(String nombre) { //Probado y funcionando 
+    public Entrenador buscarEntrenadorPorNombre(String nombre) { //Probado y funcionando 
         Entrenador entrenador = null;
         String sql = "SELECT IdEntrenador,dni, apellido, especialidad FROM entrenador WHERE  nombre = ? AND estado = 1";
         
