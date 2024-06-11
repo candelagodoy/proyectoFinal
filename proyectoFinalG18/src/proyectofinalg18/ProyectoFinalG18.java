@@ -147,7 +147,7 @@ public class ProyectoFinalG18 {
          
         //Busqueda por especialidad
         //System.out.println(""+ eD.buscarEntrenadorPorEspecialidad("Calistenia"));
-        System.out.println(""+ eD.buscarEntrenadorPorEspecialidad("Kickboxing"));
+       // System.out.println(""+ eD.buscarEntrenadorPorEspecialidad("Kickboxing"));
         //Listar Entrenadores 
 //        System.out.println(""+ eD.listarEntrenadores());
         //Modificar y Eliminar un Entrenador 
