@@ -28,9 +28,6 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     private ClaseData claseData;
     private Clase claseactual=null;
     private Entrenador entrenadoractual=null;
-    private List<Entrenador> listaEntrenadores;
-    private EntrenadorData entrenadorData=new EntrenadorData();
-    
     public ClaseVista() {
         
         initComponents();
@@ -38,9 +35,8 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         claseData = new ClaseData();
         listaclase = claseData.listarClases();
         listahora=claseData.listarClases();
-        listaEntrenadores=entrenadorData.listarEntrenadores();
         cargarClases();
-        cargarEntrenadores();
+       
     }
 
     /**
@@ -54,7 +50,6 @@ public class ClaseVista extends javax.swing.JInternalFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jBBuscar = new javax.swing.JButton();
-        jCEntrenadores = new javax.swing.JComboBox<>();
         jBSalir = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -70,6 +65,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jTidclase = new javax.swing.JTextField();
         jCnombreclase = new javax.swing.JComboBox<>();
+        jTNomentrenador = new javax.swing.JTextField();
         jRestado = new javax.swing.JRadioButton();
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
@@ -133,6 +129,11 @@ public class ClaseVista extends javax.swing.JInternalFrame {
 
         jCnombreclase.setEditable(true);
         jCnombreclase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jCnombreclase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCnombreclaseActionPerformed(evt);
+            }
+        });
 
         jRestado.setSelected(true);
         jRestado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -144,7 +145,6 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         });
 
         jDesktopPane1.setLayer(jBBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCEntrenadores, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -160,6 +160,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTidclase, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCnombreclase, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTNomentrenador, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRestado, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -186,30 +187,30 @@ public class ClaseVista extends javax.swing.JInternalFrame {
                                         .addComponent(jBEliminar)
                                         .addGap(43, 43, 43)
                                         .addComponent(jBGuardar))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(jLabel4))
-                                                .addGap(79, 79, 79)
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jCHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jRestado)
-                                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                        .addComponent(jCnombreclase, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(54, 54, 54)
-                                                        .addComponent(jBBuscar))))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jLabel7))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTidclase, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jCEntrenadores, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(72, 72, 72)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel4))
+                                            .addGap(79, 79, 79)
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jCHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jRestado)
+                                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                    .addComponent(jCnombreclase, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(54, 54, 54)
+                                                    .addComponent(jBBuscar)))
+                                            .addGap(72, 72, 72))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel7))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTidclase, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTNomentrenador))
+                                            .addGap(87, 87, 87))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)))
                         .addGap(20, 20, 20)
                         .addComponent(jBSalir)))
@@ -233,7 +234,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jCEntrenadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTNomentrenador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -242,7 +243,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jRestado))
@@ -276,50 +277,39 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jCnombreclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCnombreclaseActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jCnombreclaseActionPerformed
+
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         // TODO add your handling code here:
         jTidclase.setEnabled(false);
+        jTNomentrenador.setEnabled(false);
         claseactual = null;
         limpiarCampos();
-        
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
         String nomclase=String.valueOf(jCnombreclase.getSelectedItem());
                 jTidclase.setEnabled(true);
-       
+        jTNomentrenador.setEnabled(true);
         claseactual=claseData.buscarClasePorNombre(nomclase);
         
         if (claseactual != null) {
             String id= String.valueOf(claseactual.getIdClase()); 
                 jTidclase.setText(id);
-                int i = this.getIndex(claseactual.getentrenador().getIdEntrenador());
-                jCEntrenadores.setSelectedIndex(i);
+                EntrenadorData ent=new EntrenadorData();
+                entrenadoractual=ent.buscarEntrenadorPorEspecialidad(nomclase);
+                jTNomentrenador.setText(entrenadoractual.getNombre()+" "+entrenadoractual.getApellido());
                 cargarHorarios();
                 String cap = String.valueOf(claseactual.getCapacidad());
                 jTCapacidad.setText(cap);
-                jRestado.setSelected(claseactual.isEstado());                
             }
         
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    public int getIndex(int IdEntrenador){
-        int indextmp = -1;
-        for(int i=0; i < jCEntrenadores.getItemCount(); i++){
-            Entrenador ob = (Entrenador)jCEntrenadores.getItemAt(i);
-            if(ob.getIdEntrenador() == IdEntrenador){
-                 indextmp = i;
-            }
-        }
-        return indextmp;
-    }
-
-    
-    
-    
-    
-    
     private void jCHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCHorarioActionPerformed
         // TODO add your handling code here:
 
@@ -348,24 +338,24 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             String nom= String.valueOf(jCnombreclase.getSelectedItem());
-            Entrenador entre= new Entrenador();
-            String nomE=String.valueOf(jCEntrenadores.getSelectedItem());
-            entre=entrenadorData.buscarEntrenadorPorNombre(nomE);
             int cap= Integer.valueOf(jTCapacidad.getText());
             LocalTime hora=LocalTime.parse(jCHorario.getSelectedItem().toString());
-            boolean es=jRestado.isSelected();
+            boolean es=true;
+            
             if (nom.isEmpty() || jTCapacidad.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Puede Haber Campos Vacios!");
                 return;
             } 
             if (claseactual == null) {   ///String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado)
-
-                claseactual = new Clase(nom,entre, hora , cap, es);
+                EntrenadorData ent=new EntrenadorData();
+                entrenadoractual=ent.buscarEntrenadorPorEspecialidad(nom);
+                
+                claseactual = new Clase(nom,entrenadoractual, hora , cap, es);
                 claseData.guardarClase(claseactual);
                 limpiarCampos();
             } else {
                 claseactual.setNombre(nom);
-                claseactual.setentrenador(entre);
+                claseactual.setentrenador(entrenadoractual);
                 claseactual.setHorario(hora);
                 claseactual.setCapacidad(cap);
                 claseactual.setEstado(es);
@@ -391,6 +381,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void cargarClases(){
+        
         for (Clase aux: listaclase) {
             if (aux.isEstado()!=false){
             jCnombreclase.addItem(aux.getNombre());
@@ -400,6 +391,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     }
     
     private void cargarHorarios(){
+          
            for (Clase aux: listahora) {
                 if (aux.isEstado()!=false){
             String hora=String.valueOf(aux.getHorario());   
@@ -410,17 +402,9 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         }   
     }
     
-    private void cargarEntrenadores(){
-        for (Entrenador e :listaEntrenadores ) {
-            jCEntrenadores.addItem(e);
-        } 
-        }
-    
-    
-    
     private void limpiarCampos(){
     jTidclase.setText("");
-    jCEntrenadores.setSelectedItem(null);
+    jTNomentrenador.setText("");
     jCHorario.setSelectedItem(null);
     jTCapacidad.setText("");
     jRestado.setSelected(true);
@@ -432,7 +416,6 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<Entrenador> jCEntrenadores;
     private javax.swing.JComboBox<String> jCHorario;
     private javax.swing.JComboBox<String> jCnombreclase;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -445,6 +428,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JRadioButton jRestado;
     private javax.swing.JTextField jTCapacidad;
+    private javax.swing.JTextField jTNomentrenador;
     private javax.swing.JTextField jTidclase;
     // End of variables declaration//GEN-END:variables
 }

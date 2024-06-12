@@ -65,38 +65,37 @@
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jTCapacidad" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                                                      <Component id="jCHorario" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                                                      <Component id="jRestado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jCnombreclase" min="-2" pref="103" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                                          <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTCapacidad" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <Component id="jCHorario" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                                                  <Component id="jRestado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jCnombreclase" min="-2" pref="103" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                                      <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jTidclase" min="-2" pref="56" max="-2" attributes="0"/>
-                                                      <Component id="jCEntrenadores" min="-2" pref="155" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTidclase" min="-2" pref="56" max="-2" attributes="0"/>
+                                                  <Component id="jTNomentrenador" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="6" max="32767" attributes="0"/>
@@ -131,7 +130,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCEntrenadores" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTNomentrenador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -143,7 +142,7 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTCapacidad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" pref="20" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRestado" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -170,16 +169,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBuscarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jCEntrenadores">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Entrenador&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jBSalir">
           <Properties>
@@ -281,9 +270,14 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCnombreclaseActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTNomentrenador">
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRestado">
           <Properties>

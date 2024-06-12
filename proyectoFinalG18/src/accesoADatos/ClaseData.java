@@ -87,8 +87,6 @@ public class ClaseData {
             while (resultado.next()) {
                 Clase clase = new Clase();
                 Entrenador entrenador = new Entrenador();
-                EntrenadorData ent=new EntrenadorData();
-                entrenador = ent.buscarEntrenadorPorEspecialidad(resultado.getString("nombre"));
                 clase.setIdClase(resultado.getInt("IdClase"));
                 clase.setNombre(resultado.getString("nombre"));
                 entrenador.setIdEntrenador(resultado.getInt("IdEntrenador"));
@@ -96,7 +94,6 @@ public class ClaseData {
                 clase.setHorario(resultado.getTime("horario").toLocalTime());
                 clase.setCapacidad(resultado.getInt("capacidad"));
                 clase.setEstado(resultado.getBoolean("estado"));
-                
                 clases.add(clase);
             }
            
