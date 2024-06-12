@@ -80,6 +80,11 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
         });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -249,15 +254,16 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
     private void jBCancelarMembresiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarMembresiaActionPerformed
         // TODO add your handling code here:
         
-        try{
+        if(membresiaActual != null){
+            System.out.println(membresiaActual.getIdMembresia());
+            membresiaData.eliminarMembresia(membresiaActual.getIdMembresia());
             
-        
-        
+            membresiaActual = null;
+            limpiarCampos();
+            
         }
-        catch(NumberFormatException ex){
-        
-            JOptionPane.showMessageDialog(this, "Los campos DNI,EDAD y TELEFONO deben ser numéricos");
-        
+        else{
+            System.out.println("No hay una membresia seleccionada");
         }
         
         
@@ -273,7 +279,9 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
         try{
             Integer id=Integer.parseInt(jTId.getText());
             membresiaActual = membresiaData.buscarMembresiaPorId(id);
+            membresiaActual.setIdMembresia(id);
             if(membresiaActual != null){
+                
                 int i = this.getIndex(membresiaActual.getSocio().getIdSocio());
                 jCSocios.setSelectedIndex(i);
                 jTPases.setText(membresiaActual.getCantidadPases()+"");
@@ -284,7 +292,8 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
                 java.util.Date date2 = java.util.Date.from(fFin.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jDFin.setDate(date2);
                 jTCosto.setText(membresiaActual.getCosto()+"");
-                jREstado.setSelected(membresiaActual.isEstado());  
+                jREstado.setSelected(membresiaActual.isEstado()); 
+                
             }  
         
         }
@@ -293,6 +302,43 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
         
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+           
+            Socio socio =(Socio) jCSocios.getSelectedItem();
+            Integer idSocio =Integer.parseInt(socio.getIdSocio()+"") ;
+            Integer pases = Integer.parseInt(jTPases.getText());
+            java.util.Date fInicio = jDInicio.getDate();
+            LocalDate fechaInicio = fInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            java.util.Date fFin = jDInicio.getDate();
+            LocalDate fechaFin = fFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Double costo =Double.parseDouble(jTCosto.getText());
+            boolean estado = jREstado.isSelected();
+            
+            if(membresiaActual == null){
+                membresiaActual = new Membresia (socio,pases,fechaInicio,fechaFin,costo,estado);
+                membresiaData.guardarMembresia(membresiaActual);
+                limpiarCampos();
+            }
+            else{
+                membresiaActual.setSocio(socio);
+                membresiaActual.setCantidadPases(pases);
+                membresiaActual.setFechaInicio(fechaInicio);
+                membresiaActual.setFechaFin(fechaFin);
+                membresiaActual.setCosto(costo);
+                membresiaActual.setEstado(estado);
+                membresiaData.modificarMembresia(membresiaActual);
+                limpiarCampos();
+            }
+           
+        }
+        catch(NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Los campos Pases y Costo deben ser numericos");
+        
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
     
     public int getIndex(int idSocio){

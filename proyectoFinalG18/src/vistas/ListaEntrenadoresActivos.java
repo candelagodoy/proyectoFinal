@@ -15,13 +15,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Candela
  */
 public class ListaEntrenadoresActivos extends javax.swing.JInternalFrame {
-    
-    
+
     private EntrenadorData entrenadorData = new EntrenadorData();
-    
+
     private List<Entrenador> LEntrenadores;
     private DefaultTableModel modelo;
-    
+
     public ListaEntrenadoresActivos() {
         initComponents();
         modelo = new DefaultTableModel();
@@ -29,17 +28,16 @@ public class ListaEntrenadoresActivos extends javax.swing.JInternalFrame {
         cargarEntrenadores();
 
     }
-    public void cargarEntrenadores(){
+
+    public void cargarEntrenadores() {
         LEntrenadores = entrenadorData.listarEntrenadores();
-        for(Entrenador e : LEntrenadores){
-            modelo.addRow(new Object[]{e.getIdEntrenador(), e.getDni(), e.getNombre(),e.getApellido(),e.getEspecialidad(),e.isEstado()});
+        for (Entrenador e : LEntrenadores) {
+            modelo.addRow(new Object[]{e.getIdEntrenador(), e.getDni(), e.getNombre(), e.getApellido(), e.getEspecialidad(), e.isEstado()});
         }
-        
+
     }
-    
-        
-        
-        public void armarCabecera(){
+
+    public void armarCabecera() {
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Id");
         filaCabecera.add("DNI");
@@ -47,25 +45,24 @@ public class ListaEntrenadoresActivos extends javax.swing.JInternalFrame {
         filaCabecera.add("Apellido");
         filaCabecera.add("Especialidad");
         filaCabecera.add("Estado");
-                
-        for(Object it :filaCabecera){
+
+        for (Object it : filaCabecera) {
             modelo.addColumn(it);
         }
         jTEntrenadores.setModel(modelo);
-    
+
     }
-        private void borrarFilaTabla() {
+
+    private void borrarFilaTabla() {
         int indice = modelo.getRowCount() - 1;
 
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
-      
-    
-    /**
-     * Creates new form ListaEntrenadoresActivos
-     */
-    
+
+        /**
+         * Creates new form ListaEntrenadoresActivos
+         */
     }
 
     /**
