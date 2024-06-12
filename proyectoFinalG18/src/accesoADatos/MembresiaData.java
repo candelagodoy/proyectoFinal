@@ -55,7 +55,7 @@ public class MembresiaData {
     public Membresia buscarMembresia(String dni) {// Listo y Probado 
         Membresia membresia = null;
         Socio socio= null;
-        String sql = "SELECT s.IdSocio, s.nombre, s.apellido,m.IdMembresia, m.cantidadPases, m.FechaFin FROM membresia m join socio s on (m.IdSocio= s.IdSocio)  WHERE m.estado = 1 and s.estado = 1 and s.dni = ?";
+        String sql = "SELECT m.IdMembresia,s.IdSocio, m.cantidadPases,m.FechaInicio, m.FechaFin, m.costo, m.estado FROM membresia m join socio s on (m.IdSocio= s.IdSocio)  WHERE m.estado = 1 and s.estado = 1 and s.dni = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -65,11 +65,13 @@ public class MembresiaData {
                 membresia = new Membresia();
                 socio= new Socio(); 
                 socio.setIdSocio(resultado.getInt("IdSocio"));
-                socio.setNombre(resultado.getString("nombre"));
-                socio.setApellido(resultado.getString("apellido"));
+                
                 membresia.setIdMembresia(resultado.getInt("IdMembresia"));
-                membresia.setCantidadPases(resultado.getInt("CantidadPases"));
-                membresia.setFechaFin(resultado.getDate("FechaFin").toLocalDate());                 
+                membresia.setCantidadPases(resultado.getInt("cantidadPases"));
+                membresia.setFechaInicio(resultado.getDate("FechaInicio").toLocalDate());
+                membresia.setFechaFin(resultado.getDate("FechaFin").toLocalDate()); 
+                membresia.setCosto(resultado.getDouble("costo"));
+                membresia.setEstado(resultado.getBoolean("estado"));
                 membresia.setSocio(socio);
                
             } else {

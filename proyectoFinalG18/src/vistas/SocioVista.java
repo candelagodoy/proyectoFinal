@@ -358,7 +358,7 @@ public class SocioVista extends javax.swing.JInternalFrame {
         jTTelefono.setText("");
         jTCorreo.setText("");
         jREstado.setSelected(false);
-
+        socioActual =null;
     }
 
 

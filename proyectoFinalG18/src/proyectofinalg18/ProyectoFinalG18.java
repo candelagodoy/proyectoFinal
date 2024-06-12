@@ -117,7 +117,7 @@ public class ProyectoFinalG18 {
         //Guardar Membresia
         //mD.guardarMembresia(membresia2);
         //Buscar Membresia 
-//       System.out.println(""+mD.buscarMembresia("39001002"));
+       System.out.println(""+mD.buscarMembresia("38001002"));
         //Listar Mmebresias
 //        System.out.println(""+mD.listarMembresias());
         //Eliminar Membresia
@@ -127,7 +127,7 @@ public class ProyectoFinalG18 {
         //Modificar cantidad de pases 
 //        mD.modificarCantidadPases(membresia2);
         //Buscar membresia por ID
-        System.out.println(mD.buscarMembresiaPorId(6));
+//        System.out.println(mD.buscarMembresiaPorId(6));
 
 
 

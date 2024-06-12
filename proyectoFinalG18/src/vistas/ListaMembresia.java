@@ -172,10 +172,12 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
             
             modelo.addRow(new Object[]{membresiaDni.getIdMembresia(), membresiaDni.getSocio().getIdSocio(), membresiaDni.getCantidadPases(),
                 membresiaDni.getFechaInicio(), membresiaDni.getFechaFin(), membresiaDni.getCosto(), membresiaDni.isEstado()});
+            
         } else {
             JOptionPane.showMessageDialog(this, "Debe ingresar un dni válido para buscar su membresia");
         }
-
+        
+        
     }
 
     public void cargarTodasMembresias() {
@@ -184,7 +186,7 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{m.getIdMembresia(), m.getSocio().getIdSocio(), m.getCantidadPases(),
                 m.getFechaInicio(), m.getFechaFin(), m.getCosto(), m.isEstado()});
         }
-
+       
     }
 
     public void armarCabecera() {
