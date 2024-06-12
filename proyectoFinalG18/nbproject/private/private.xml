@@ -12,7 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/NoxiePC/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/AsistenciaVista.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/ListaEntrenadoresActivos.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/ListaClasesActivas.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/accesoADatos/ClaseData.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/ClaseVista.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/entidades/Clase.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/ListaSocios.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/entidades/Entrenador.java</file>
+            <file>file:/C:/Users/jez_3/Documents/GitHub/proyectoFinal/proyectoFinalG18/src/vistas/MembresiaVista.java</file>
         </group>
     </open-files>
 </project-private>
