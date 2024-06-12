@@ -31,6 +31,14 @@ public class AsistenciaData {
         String sql="INSERT INTO asistencia (IdSocio, IdClase, FechaAsistencia) VALUES (?,?,?)";
         
         try {
+            String dni=asistencia.getSocio().getDni();
+            Membresia membre = membresiaData.buscarMembresia(dni);
+            if(membre.getCantidadPases() == 0){
+                JOptionPane.showMessageDialog(null, "No posee pases, Actualice su membresia");
+                return;
+            }
+            
+            
             PreparedStatement ps =con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, asistencia.getSocio().getIdSocio());
             ps.setInt(2, asistencia.getClase().getIdClase());
@@ -40,11 +48,10 @@ public class AsistenciaData {
             ResultSet resultado = ps.getGeneratedKeys();
             
             if(resultado.next()){
+               
                asistencia.setIdAsistencia(resultado.getInt(1));
-               String dni=asistencia.getSocio().getDni();
-               Membresia membre = membresiaData.buscarMembresia(dni);
                membresiaData.modificarCantidadPases(membre);
-              
+               
                JOptionPane.showMessageDialog(null, "Asistencia agregada con exito!");
             
             }

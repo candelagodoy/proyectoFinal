@@ -31,7 +31,7 @@ public class ProyectoFinalG18 {
         Socio marcela = new Socio(4,"37548964", "Marcela", "Gomez", 27, "marce@hotmail.com", 266487545, true);
         
 
-        Membresia membresia = new Membresia(pablo, 30, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
+        Membresia membresia = new Membresia(pablo, 0, LocalDate.of(2024, 06, 01), LocalDate.of(2024, 07, 02) , 16000, true);
         Membresia membresia2 = new Membresia(6,marcela,13, LocalDate.of(2024, 06, 05), LocalDate.of(2024,07 , 06), 13500, true);
         
         Clase cl= new Clase(1,"Boxeo Profesional",Juanjo,LocalTime.of(17, 00),12,true);
@@ -46,6 +46,7 @@ public class ProyectoFinalG18 {
         Asistencia a3 = new Asistencia(enrique,c5,LocalDate.of(2024, 06, 07)); 
         Asistencia a4 = new Asistencia(marcela, c3,LocalDate.of(2024, 06, 11));
         Asistencia a5 = new Asistencia(marcela, c3,LocalDate.of(2024, 06, 10));
+        Asistencia a6 =new Asistencia(pablo,c5, LocalDate.of(2024, 06, 12));
 
         
         
@@ -67,7 +68,8 @@ public class ProyectoFinalG18 {
 //        System.out.println(""+aD.listandoAsistencia());
         //Listando Asistencias por Socio
 //        System.out.println(""+aD.asistenciaPorSocio(1));
-            
+        //Probar guardar y descontar
+//        aD.guardarAsistencia(a6);
 
             
         ////PRUEBAS CLASE DATA ////
@@ -117,7 +119,7 @@ public class ProyectoFinalG18 {
         //Guardar Membresia
         //mD.guardarMembresia(membresia2);
         //Buscar Membresia 
-       System.out.println(""+mD.buscarMembresia("38001002"));
+//       System.out.println(""+mD.buscarMembresia("38001002"));
         //Listar Mmebresias
 //        System.out.println(""+mD.listarMembresias());
         //Eliminar Membresia

@@ -65,7 +65,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" min="-2" pref="304" max="-2" attributes="0"/>
+                                      <Component id="jTnya" min="-2" pref="304" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -99,15 +99,13 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jBBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTDniSocio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jBBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTDniSocio" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTnya" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,6 +138,9 @@
               <Image iconType="3" name="/resursos/lupa_1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBuscarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -149,11 +150,15 @@
         <Component class="javax.swing.JComboBox" name="jComboBox2">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="8">
+                <StringItem index="0" value="14:00"/>
+                <StringItem index="1" value="15:00"/>
+                <StringItem index="2" value="16:00"/>
+                <StringItem index="3" value="17:00"/>
+                <StringItem index="4" value="18:00"/>
+                <StringItem index="5" value="19:00"/>
+                <StringItem index="6" value="20:00"/>
+                <StringItem index="7" value="21:00"/>
               </StringArray>
             </Property>
           </Properties>
@@ -169,11 +174,12 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Sp"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="5">
+                <StringItem index="0" value="Spinning"/>
+                <StringItem index="1" value="Boxeo Profesional"/>
+                <StringItem index="2" value="Fullbody"/>
+                <StringItem index="3" value="Crossfit"/>
+                <StringItem index="4" value="Calistenia"/>
               </StringArray>
             </Property>
           </Properties>
@@ -216,8 +222,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalirActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jTnya">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
