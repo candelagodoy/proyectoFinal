@@ -4,17 +4,25 @@
  */
 package vistas;
 
+import entidades.Clase;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Candela
  */
 public class ListaClasesActivas extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form ListaClasesActivas
-     */
+    
+   private List<Clase> listaclase;
+   private DefaultTableModel modelo;
     public ListaClasesActivas() {
         initComponents();
+        
+        armarCabeceraTabla();
+        cargarClases();
+        
     }
 
     /**
@@ -27,9 +35,15 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jBsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTClasesActivas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jBListar = new javax.swing.JButton();
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jBsalir.setText("Salir");
 
         jTClasesActivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -46,53 +60,118 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
 
         jLabel1.setText("CLASES ACTIVAS");
 
+        jBListar.setText("Listar");
+        jBListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBListarActionPerformed(evt);
+            }
+        });
+
+        jDesktopPane1.setLayer(jBsalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBListar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(166, 166, 166)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBsalir)))
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBsalir)
+                    .addComponent(jBListar))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+//    borrarFilaTabla();
+//        Materia mat=(Materia)jCBmateria.getSelectedItem();
+//        listaAlumnos = inscripcionData.obtenerAlumnosPorMateria(mat.getIdMateria());
+//        for (Alumno a : listaAlumnos) {
+//            modelo.addRow(new Object []{a.getIdAlumno(),a.getDni(),a.getNombre(),a.getApellido()});
+//        }  
+//    
+    
+    
+    
+    
+    private void jBListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jBListarActionPerformed
+
+    private void armarCabeceraTabla() {
+        //int IdClase, String nombre, Entrenador entrenador, LocalTime horario, int capacidad
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("idClase");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Entrenador");
+        filaCabecera.add("horarario");
+        filaCabecera.add("Capacidad");
+
+        for (Object it : filaCabecera) {
+            modelo.addColumn(it);
+        }
+        jTClasesActivas.setModel(modelo);
+       
+    }
+    
+    private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
+
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void cargarClases(){
+        for (Clase item: listaclase) {
+            listaclase.add(item);
+        }
+        
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBListar;
+    private javax.swing.JButton jBsalir;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
