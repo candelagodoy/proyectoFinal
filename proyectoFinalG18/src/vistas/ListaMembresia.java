@@ -2,9 +2,12 @@ package vistas;
 
 import accesoADatos.MembresiaData;
 import entidades.Membresia;
+import java.awt.Graphics;
+import java.awt.Image;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,7 +34,13 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resursos/fondo5.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTMembresias = new javax.swing.JTable();
@@ -41,7 +50,11 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
         jBSalir = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
 
-        jLabel1.setText("MEMBRESIAS");
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("  MEMBRESIAS");
 
         jTMembresias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,6 +69,7 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTMembresias);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DNI Socio:");
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/lupa_1.png"))); // NOI18N
@@ -104,9 +118,9 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
                 .addGap(124, 124, 124)
                 .addComponent(jLabel2)
                 .addGap(80, 80, 80)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTDni, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(jBBuscar)
                 .addGap(113, 113, 113))
@@ -127,7 +141,7 @@ public class ListaMembresia extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSalir)
                     .addComponent(jBLimpiar))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -5,8 +5,11 @@
 package vistas;
 
 import entidades.Clase;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,7 +37,14 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resursos/fondo5.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+
+        };
         jBsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTClasesActivas = new javax.swing.JTable();
@@ -58,6 +68,8 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTClasesActivas);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CLASES ACTIVAS");
 
         jBListar.setText("Listar");
@@ -79,7 +91,7 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addComponent(jLabel1)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +110,7 @@ public class ListaClasesActivas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
                     .addComponent(jBListar))

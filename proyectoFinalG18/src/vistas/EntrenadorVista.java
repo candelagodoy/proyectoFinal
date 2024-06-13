@@ -3,6 +3,9 @@ package vistas;
 
 import accesoADatos.EntrenadorData;
 import entidades.Entrenador;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class EntrenadorVista extends javax.swing.JInternalFrame {
@@ -20,7 +23,13 @@ public class EntrenadorVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resursos/fondo5.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
         jLDni = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
@@ -41,17 +50,24 @@ public class EntrenadorVista extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/entrenador.png"))); // NOI18N
         jLabel1.setText("Entrenadores");
 
+        jLDni.setForeground(new java.awt.Color(255, 255, 255));
         jLDni.setText("DNI:");
 
+        jLNombre.setForeground(new java.awt.Color(255, 255, 255));
         jLNombre.setText("Nombre:");
 
+        jLApellido.setForeground(new java.awt.Color(255, 255, 255));
         jLApellido.setText("Apellido:");
 
+        jLEspecialidad.setForeground(new java.awt.Color(255, 255, 255));
         jLEspecialidad.setText("Especialidad:");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Estado:");
 
         jBNuevo.setText("Nuevo");
@@ -177,7 +193,7 @@ public class EntrenadorVista extends javax.swing.JInternalFrame {
                             .addComponent(jTEspecialidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addComponent(jBBuscarNombre)))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -8,10 +8,13 @@ import accesoADatos.MembresiaData;
 import accesoADatos.SocioData;
 import entidades.Membresia;
 import entidades.Socio;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,7 +41,13 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resursos/fondo5.jpg"));
+        Image image = icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel2 = new javax.swing.JLabel();
         jCSocios = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -60,16 +69,24 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
         jBBuscar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
 
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Id Socio:");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad Pases:");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha inicio:");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha fin:");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Costo:");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Estado:");
 
         jBCancelarMembresia.setText("Cancelar Mebresia");
@@ -93,8 +110,11 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("MEMBRESIAS");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("  MEMBRESIAS");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Id Membresia:");
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resursos/lupa_1.png"))); // NOI18N
@@ -188,7 +208,7 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
                                 .addComponent(jBSalir))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -202,7 +222,7 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8)
                         .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jCSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
