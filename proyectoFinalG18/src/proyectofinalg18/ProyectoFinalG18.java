@@ -88,8 +88,8 @@ public class ProyectoFinalG18 {
 //        System.out.println(""+cD.listarClases());
        //Buscar Clase
 //        System.out.println(""+cD.buscarClasePorNombre("Fullbody"));
-       //Modificar capacidad
-//       cD.ModificarCapacidadClase(c4);
+       //buscar clase con capacidad
+//       cD.ClaseConCapacidad(LocalDate.of(2024, 06, 12), "Calistenia");
        //Modificar clase 
 //       cD.ModificarClase(cl);
 

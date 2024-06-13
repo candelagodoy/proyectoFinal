@@ -9,7 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -161,27 +162,46 @@ public class ClaseData {
     
     }
 
-    public void ModificarCapacidadClase(Clase clase){//PROBADO Y FUNCIONANDO
-        String sql = "UPDATE clase SET capacidad = ? WHERE IdClase=?";
+    public Clase ClaseConCapacidad(LocalDate fecha, String nombreClase, Time horario){//PROBADO Y FUNCIONANDO
+        String sql = "SELECT IdClase,nombre,Identrenador, capacidad FROM clase WHERE horario=? \n" +
+                    "AND nombre LIKE ? \n" +
+                    "AND capacidad > (SELECT count(IdSocio) \n" +
+                    "FROM asistencia\n" +
+                    "WHERE IdClase = ? AND FechaAsistencia =?)";
+        Clase clase = buscarClasePorNombre(nombreClase);
+        
+        Clase nuevaClase = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, (clase.getCapacidad()-1));
-            ps.setInt(2, clase.getIdClase());
+            ps.setTime(1,horario);
+            ps.setString(2, nombreClase);
+            ps.setInt(3, clase.getIdClase());
+            ps.setDate(4, Date.valueOf(fecha));
+            ResultSet resultado = ps.executeQuery();
             
-            int exito = ps.executeUpdate();
-            if(exito == 1){
-                JOptionPane.showMessageDialog(null,"Capacidad reducida");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Clase no encontrada");
-            }
+            if(resultado.next()){
+                nuevaClase=new Clase();
+                nuevaClase.setIdClase(resultado.getInt("IdClase"));
+                nuevaClase.setNombre(resultado.getString("nombre"));
+                Entrenador entrenador = new Entrenador();
+                entrenador.setIdEntrenador(resultado.getInt("IdEntrenador"));
+                nuevaClase.setentrenador(entrenador);
+                nuevaClase.setCapacidad(resultado.getInt("capacidad"));
+                
+                
             
+            }else{
+                JOptionPane.showMessageDialog(null, "No hay ninguna clase disponible");
+            
+            }
+            ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla clase ");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla clase CAPACIDAD");
         }
         
+        return nuevaClase;
     
     }
 }
