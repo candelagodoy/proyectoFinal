@@ -4,8 +4,6 @@ package vistas;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-
-
 import accesoADatos.ClaseData;
 import accesoADatos.EntrenadorData;
 import entidades.Clase;
@@ -29,21 +27,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ClaseVista extends javax.swing.JInternalFrame {
 
-    private List<Clase> listaclase,listahora;
+    private List<Clase> listaclase, listahora;
     private ClaseData claseData;
-    private Clase claseactual=null;
-    private Entrenador entrenadoractual=null;
+    private Clase claseactual = null;
+    private Entrenador entrenadoractual = null;
     private List<Entrenador> listaEntrenadores;
-    private EntrenadorData entrenadorData=new EntrenadorData();
-    
+    private EntrenadorData entrenadorData = new EntrenadorData();
+
     public ClaseVista() {
-        
+
         initComponents();
-     
+
         claseData = new ClaseData();
         listaclase = claseData.listarClases();
-        listahora=claseData.listarClases();
-        listaEntrenadores=entrenadorData.listarEntrenadores();
+        listahora = claseData.listarClases();
+        listaEntrenadores = entrenadorData.listarEntrenadores();
         cargarClases();
         cargarEntrenadores();
     }
@@ -306,7 +304,7 @@ public class ClaseVista extends javax.swing.JInternalFrame {
 
     private void jCnombreclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCnombreclaseActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jCnombreclaseActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -318,32 +316,32 @@ public class ClaseVista extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
-        String nomclase=String.valueOf(jCnombreclase.getSelectedItem());
-                jTidclase.setEnabled(true);
-       
-        claseactual=claseData.buscarClasePorNombre(nomclase);
-        
+        String nomclase = String.valueOf(jCnombreclase.getSelectedItem());
+        jTidclase.setEnabled(true);
+
+        claseactual = claseData.buscarClasePorNombre(nomclase);
+
         if (claseactual != null) {
-            String id= String.valueOf(claseactual.getIdClase()); 
-                jTidclase.setText(id);
-                int i = this.getIndex(claseactual.getentrenador().getIdEntrenador());
-                jCEntrenadores.setSelectedIndex(i);
-                cargarHorarios();
-                String cap = String.valueOf(claseactual.getCapacidad());
-                jTCapacidad.setText(cap);
-                jRestado.setSelected(claseactual.isEstado());                
-            }
-        
-        
+            String id = String.valueOf(claseactual.getIdClase());
+            jTidclase.setText(id);
+            int i = this.getIndex(claseactual.getentrenador().getIdEntrenador());
+            jCEntrenadores.setSelectedIndex(i);
+            cargarHorarios();
+            String cap = String.valueOf(claseactual.getCapacidad());
+            jTCapacidad.setText(cap);
+            jRestado.setSelected(claseactual.isEstado());
+        }
+
+
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    public int getIndex(int IdEntrenador){
+    public int getIndex(int IdEntrenador) {
         int indextmp = -1;
-        for(int i=0; i < jCEntrenadores.getItemCount(); i++){
-            Entrenador ob = (Entrenador)jCEntrenadores.getItemAt(i);
-            
-            if(ob.getIdEntrenador() == IdEntrenador){
-                 indextmp = i;
+        for (int i = 0; i < jCEntrenadores.getItemCount(); i++) {
+            Entrenador ob = (Entrenador) jCEntrenadores.getItemAt(i);
+
+            if (ob.getIdEntrenador() == IdEntrenador) {
+                indextmp = i;
             }
         }
         return indextmp;
@@ -355,19 +353,18 @@ public class ClaseVista extends javax.swing.JInternalFrame {
 
     private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
         // TODO add your handling code here:
-        try{
-            if(claseactual.getNombre().isEmpty()!=true){
-        if(claseactual.isEstado() != true){
-            claseactual.setEstado(true);
-        }
-        else{
-            claseactual.setEstado(false);
-        }
-            }else{
-            jBGuardar.setEnabled(false);
-            jBEliminar.setEnabled(false);
+        try {
+            if (claseactual.getNombre().isEmpty() != true) {
+                if (claseactual.isEstado() != true) {
+                    claseactual.setEstado(true);
+                } else {
+                    claseactual.setEstado(false);
+                }
+            } else {
+                jBGuardar.setEnabled(false);
+                jBEliminar.setEnabled(false);
             }
-        }catch(Exception e ) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "error faltan campos por llenar");
         }
     }//GEN-LAST:event_jRestadoActionPerformed
@@ -375,21 +372,21 @@ public class ClaseVista extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
         try {
-            String nom= String.valueOf(jCnombreclase.getSelectedItem());
-            Entrenador entre= new Entrenador();
-            String nomE=String.valueOf(jCEntrenadores.getSelectedItem());
-            entre=entrenadorData.buscarEntrenadorPorNombre(nomE);
-            
-            int cap= Integer.valueOf(jTCapacidad.getText());
-            LocalTime hora=LocalTime.parse(jCHorario.getSelectedItem().toString());
-            boolean es=jRestado.isSelected();
+            String nom = String.valueOf(jCnombreclase.getSelectedItem());
+            Entrenador entre = new Entrenador();
+            String nomE = String.valueOf(jCEntrenadores.getSelectedItem());
+            entre = entrenadorData.buscarEntrenadorPorNombre(nomE);
+
+            int cap = Integer.valueOf(jTCapacidad.getText());
+            LocalTime hora = LocalTime.parse(jCHorario.getSelectedItem().toString());
+            boolean es = jRestado.isSelected();
             if (nom.isEmpty() || jTCapacidad.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Puede Haber Campos Vacios!");
                 return;
-            } 
+            }
             if (claseactual == null) {   ///String nombre, Entrenador entrenador, LocalTime horario, int capacidad, Boolean estado)
 
-                claseactual = new Clase(nom,entre, hora , cap, es);
+                claseactual = new Clase(nom, entre, hora, cap, es);
                 claseData.guardarClase(claseactual);
                 limpiarCampos();
             } else {
@@ -404,55 +401,55 @@ public class ClaseVista extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "error faltan campos por llenar");
         }
-                                          
-        
+
+
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
-        if(claseactual!=null){
+        if (claseactual != null) {
             claseData.eliminarClase(claseactual.getIdClase());
-            claseactual=null;
+            claseactual = null;
             limpiarCampos();
-        }else{
-        JOptionPane.showMessageDialog(this,"no hay clase para eliminar");
+        } else {
+            JOptionPane.showMessageDialog(this, "no hay clase para eliminar");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
-    private void cargarClases(){
-        for (Clase aux: listaclase) {
-            if (aux.isEstado()!=false){
-            jCnombreclase.addItem(aux.getNombre());
+    private void cargarClases() {
+        for (Clase aux : listaclase) {
+            if (aux.isEstado() != false) {
+                jCnombreclase.addItem(aux.getNombre());
             }
         }
-        
+
     }
-    
-    private void cargarHorarios(){
-           for (Clase aux: listahora) {
-                if (aux.isEstado()!=false){
-            String hora=String.valueOf(aux.getHorario());   
-            jCHorario.addItem(hora);
-                }else{
-                 jCHorario.setSelectedItem(null);
-                }
-        }   
-    }
-    
-    private void cargarEntrenadores(){
-        for (Entrenador e :listaEntrenadores ) {
-            jCEntrenadores.addItem(e);
-        } 
+
+    private void cargarHorarios() {
+        for (Clase aux : listahora) {
+            if (aux.isEstado() != false) {
+                String hora = String.valueOf(aux.getHorario());
+                jCHorario.addItem(hora);
+            } else {
+                jCHorario.setSelectedItem(null);
+            }
         }
-    
-    
-    
-    private void limpiarCampos(){
-    jTidclase.setText("");
-    jCEntrenadores.setSelectedItem(null);
-    jCHorario.setSelectedItem(null);
-    jTCapacidad.setText("");
-    jRestado.setSelected(true);
+    }
+
+    private void cargarEntrenadores() {
+        for (Entrenador e : listaEntrenadores) {
+            jCEntrenadores.addItem(e);
+        }
+    }
+
+    private void limpiarCampos() {
+        jCnombreclase.setSelectedItem(null);
+        jTidclase.setText("");
+        jCEntrenadores.setSelectedItem(null);
+        jCHorario.setSelectedItem(null);
+        jTCapacidad.setText("");
+        jRestado.setSelected(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

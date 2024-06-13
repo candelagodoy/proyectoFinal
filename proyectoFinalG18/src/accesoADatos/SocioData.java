@@ -45,6 +45,7 @@ public class SocioData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla socio!");
         }
         
+        
     
     }
     

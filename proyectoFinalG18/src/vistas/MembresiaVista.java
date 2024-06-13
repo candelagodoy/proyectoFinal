@@ -332,7 +332,7 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
             Integer pases = Integer.parseInt(jTPases.getText());
             java.util.Date fInicio = jDInicio.getDate();
             LocalDate fechaInicio = fInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            java.util.Date fFin = jDInicio.getDate();
+            java.util.Date fFin = jDFin.getDate();
             LocalDate fechaFin = fFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Double costo =Double.parseDouble(jTCosto.getText());
             boolean estado = jREstado.isSelected();
@@ -387,6 +387,7 @@ public class MembresiaVista extends javax.swing.JInternalFrame {
         jREstado.setSelected(false);
         jDInicio.setDate(null);
         jDFin.setDate(null);
+        membresiaActual=null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

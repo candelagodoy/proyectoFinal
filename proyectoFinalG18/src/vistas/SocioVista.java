@@ -340,6 +340,10 @@ public class SocioVista extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Debe ingresar su correo");
                 return;
 
+            } else if(dni.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Debe ingresar su DNI");
+                return;
+            
             }
             if (socioActual == null) {
                 socioActual = new Socio(dni, nombre, apellido, edad, correo, telefono, estado);
@@ -358,7 +362,7 @@ public class SocioVista extends javax.swing.JInternalFrame {
             }
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Los campos DNI,EDAD y TELEFONO deben ser numéricos");
+            JOptionPane.showMessageDialog(this, "Los campos EDAD y TELEFONO deben ser numéricos");
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
