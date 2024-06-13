@@ -7,8 +7,10 @@ import entidades.Asistencia;
 import entidades.Socio;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class AsistenciaVista extends javax.swing.JInternalFrame {
@@ -17,11 +19,14 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
     private SocioData socioData = new SocioData();
     private Asistencia asistenciaActual = null;
     private Socio socioActual = null;
+    private DefaultTableModel modelo;
     
     
    
     public AsistenciaVista() {
         initComponents();
+        modelo = new DefaultTableModel();
+        armarCabecera();
     }
 
     @SuppressWarnings("unchecked")
@@ -44,7 +49,7 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTAsistenciaClases = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jTnya = new javax.swing.JTextField();
@@ -79,7 +84,7 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Clase:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTAsistenciaClases.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -90,7 +95,7 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTAsistenciaClases);
 
         jButton1.setText("Guardar");
 
@@ -227,7 +232,30 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+    
+    
+    public void armarCabecera(){
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Id Clase");
+        filaCabecera.add("Entrenador");
+        filaCabecera.add("Capacidad");
+        
+                
+        for(Object it :filaCabecera){
+            modelo.addColumn(it);
+        }
+        jTAsistenciaClases.setModel(modelo);
+    
+    }
+    
+     private void borrarFilaTabla() {
+        int indice = modelo.getRowCount() - 1;
 
+        for (int i = indice; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -242,8 +270,8 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTAsistenciaClases;
     private javax.swing.JTextField jTDniSocio;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTnya;
     // End of variables declaration//GEN-END:variables
 }
