@@ -287,6 +287,7 @@ public class EntrenadorVista extends javax.swing.JInternalFrame {
             String apellido = jTApellido.getText();
             String especialidad = (jTEspecialidad.getText());
             boolean estado = jREstado.isSelected();
+            
             if (entrenadorActual == null) {
                 entrenadorActual = new Entrenador(dni,nombre, apellido, especialidad,estado);
                 entrenadorData.guardarEntrenador(entrenadorActual);
