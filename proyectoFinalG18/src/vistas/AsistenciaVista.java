@@ -25,7 +25,9 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
     private SocioData socioData = new SocioData();
     private Asistencia asistenciaActual = null;
     private ClaseData claseData = new ClaseData();
+  
     private Socio socioActual = null;
+    private Clase claseActual=null;
     private DefaultTableModel modelo;
     
     
@@ -262,15 +264,12 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
     private void jCBHorarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBHorarioItemStateChanged
         // TODO add your handling code here:
         borrarFilaTabla();
-        Clase claseD = claseData.ClaseConCapacidad(LocalDate.now(), jCBNombres.getSelectedItem().toString(),Time.valueOf(jCBHorario.getSelectedItem().toString()));
-        if(claseD!= null){
-            modelo.addRow(new Object[]{claseD.getentrenador().getIdEntrenador(),claseD.getNombre(),claseD.getCapacidad()});
+        claseActual = claseData.ClaseConCapacidad(LocalDate.now(), jCBNombres.getSelectedItem().toString(),Time.valueOf(jCBHorario.getSelectedItem().toString()));
+        if(claseActual!= null){
+            modelo.addRow(new Object[]{claseActual.getentrenador().getIdEntrenador(),claseActual.getNombre(),claseActual.getCapacidad()});
         
         }
-       
         jTAsistenciaClases.setModel(modelo);
-        
-        
     }//GEN-LAST:event_jCBHorarioItemStateChanged
 
     private void jCBNombresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNombresItemStateChanged

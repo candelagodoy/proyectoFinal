@@ -332,10 +332,13 @@ public class SocioVista extends javax.swing.JInternalFrame {
             boolean estado = jREstado.isSelected();
             if (nombre.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe ingresar su nombre");
+                return;
             } else if (apellido.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe ingresar su apellido");
+                return;
             } else if (correo.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe ingresar su correo");
+                return;
 
             }
             if (socioActual == null) {
