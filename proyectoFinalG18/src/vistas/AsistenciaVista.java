@@ -262,10 +262,12 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
     private void jCBHorarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBHorarioItemStateChanged
         // TODO add your handling code here:
         borrarFilaTabla();
-        
         Clase claseD = claseData.ClaseConCapacidad(LocalDate.now(), jCBNombres.getSelectedItem().toString(),Time.valueOf(jCBHorario.getSelectedItem().toString()));
-        modelo.addRow(new Object[]{claseD.getentrenador().getIdEntrenador(),claseD.getNombre(),claseD.getCapacidad()});
+        if(claseD!= null){
+            modelo.addRow(new Object[]{claseD.getentrenador().getIdEntrenador(),claseD.getNombre(),claseD.getCapacidad()});
         
+        }
+       
         jTAsistenciaClases.setModel(modelo);
         
         
