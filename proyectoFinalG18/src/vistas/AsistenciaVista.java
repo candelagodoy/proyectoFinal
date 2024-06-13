@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,6 +120,11 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTAsistenciaClases);
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +282,23 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarFilaTabla();
     }//GEN-LAST:event_jCBNombresItemStateChanged
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+
+            socioActual.setDni(jTDniSocio.getText());
+            LocalDate fecha = LocalDate.now();
+        
+        if(socioActual != null && claseActual != null){
+            asistenciaActual = new Asistencia(socioActual, claseActual, fecha);
+            asistenciaData.guardarAsistencia(asistenciaActual);
+            borrarFilaTabla();
+            claseActual=null;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
     
     
     public void armarCabecera(){
@@ -298,7 +321,7 @@ public class AsistenciaVista extends javax.swing.JInternalFrame {
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
-        
+       
     }
      
     public void fechaActual(){

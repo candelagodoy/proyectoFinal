@@ -32,6 +32,7 @@ public class AsistenciaData {
         
         try {
             String dni=asistencia.getSocio().getDni();
+            System.out.println(dni);
             Membresia membre = membresiaData.buscarMembresia(dni);
             if(membre.getCantidadPases() == 0){
                 JOptionPane.showMessageDialog(null, "No posee pases, Actualice su membresia");

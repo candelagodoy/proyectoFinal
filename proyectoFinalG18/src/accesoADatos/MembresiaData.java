@@ -65,7 +65,6 @@ public class MembresiaData {
                 membresia = new Membresia();
                 socio= new Socio(); 
                 socio.setIdSocio(resultado.getInt("IdSocio"));
-                
                 membresia.setIdMembresia(resultado.getInt("IdMembresia"));
                 membresia.setCantidadPases(resultado.getInt("cantidadPases"));
                 membresia.setFechaInicio(resultado.getDate("FechaInicio").toLocalDate());

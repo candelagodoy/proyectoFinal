@@ -189,8 +189,6 @@ public class ClaseData {
                 nuevaClase.setentrenador(entrenador);
                 nuevaClase.setCapacidad(resultado.getInt("capacidad"));
                 
-                
-            
             }else{
                 JOptionPane.showMessageDialog(null, "No hay ninguna clase disponible");
             
